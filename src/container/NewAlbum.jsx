@@ -7,8 +7,8 @@ import '../App.css';
 
 const NewAlbumComp = () => {
   return (
-    <div className='flex gap-5 px-7 py-16'>
-        <div className='relative w-[50%] rounded-[30px]'>
+    <div className='flex gap-5 py-16'>
+        <div className='relative w-[50%] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]'>
             <MdFavoriteBorder className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(255,255,255,.2)] rounded-lg backdrop-blur-sm text-activeColor cursor-pointer transition "  />
             {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
             <img className='w-[100%] h-[100%] rounded-[30px]' src={newAlbum} alt="" />

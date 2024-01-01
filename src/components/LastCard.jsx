@@ -3,7 +3,7 @@ import artist from "../assets/artist.jpg";
 import { FaPlay } from "react-icons/fa";
 const LastCard = () => {
   return (
-    <div className="flex flex-row items-center gap-4 text-passiveColor border-b-[1px] border-gray-400 py-3 group ">
+    <div className="flex flex-row items-center gap-4 text-passiveColor border-b-[1px] border-[rgba(255,255,255,.4)] py-3 group ">
       <div className="flex justify-center items-center w-[45px] h-[45px] rounded-full overflow-hidden">
         <img src={artist} alt="" className="w-full h-full bg-cover" />
       </div>

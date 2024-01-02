@@ -12,7 +12,7 @@ import { PiMusicNotesPlusFill } from "react-icons/pi";
 import "../App.css";
 const SideBar = () => {
   return (
-      <div className="fixed w-[14%] h-[100vh] bg-bgColor p-4">
+    <div className="fixed w-[14%] h-[100vh] bg-bgSideGradient p-4">
       <div className="flex items-center cursor-pointer">
         <img src={BeeMusicLogo} alt="logo" className="w-[70px] h-[70px]" />
         <span className="text-[24px] text-passiveColor">BeeMusic</span>
@@ -20,7 +20,9 @@ const SideBar = () => {
       <div className="flex flex-col  gap-3">
         <div className="transition flex gap-3 text-passiveColor items-center  mt-10 cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
           <RiHome4Fill className="transition text-2xl group-hover:text-bgLinearFirst" />
-          <span className="transition group-hover:text-bgLinearFirst">Home</span>
+          <span className="transition group-hover:text-bgLinearFirst">
+            Home
+          </span>
         </div>
         <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
           <RiCompassDiscoverFill className="transition text-2xl group-hover:text-bgLinearFirst" />
@@ -30,7 +32,9 @@ const SideBar = () => {
         </div>
         <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
           <FaRadio className="transition text-2xl group-hover:text-bgLinearFirst" />
-          <span className="transition group-hover:text-bgLinearFirst">Radio</span>
+          <span className="transition group-hover:text-bgLinearFirst">
+            Radio
+          </span>
         </div>
         <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
           <MdLibraryMusic className="transition text-2xl group-hover:text-bgLinearFirst" />

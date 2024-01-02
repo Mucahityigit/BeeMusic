@@ -30,7 +30,7 @@ const NewAlbumComp = () => {
             </div>
             <div className="flex flex-col">
               <div className="text-md text-passiveColor font-bold">Artist</div>
-              <div className="transiton text-xl text-activeColor font-bold hover:text-bgLinearSecond cursor-pointer">
+              <div className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearSecond cursor-pointer">
                 Artist Name
               </div>
             </div>
@@ -56,13 +56,13 @@ const NewAlbumComp = () => {
           <div className="text-xl font-bold text-activeColor"> 2 Weeks ago</div>
         </div>
         <div className="flex gap-4">
-          <div className="transition flex gap-3 justify-center items-center bg-bgLinearSecond py-[10px] px-5 rounded-[15px] cursor-pointer group hover:bg-activeColor">
+          <div className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center bg-bgLinearSecond py-[10px] px-5 rounded-[15px] cursor-pointer group hover:bg-activeColor">
             <FaPlay className="transition text-activeColor text-[26px] group-hover:text-bgColor" />
             <span className="transition text-activeColor text-xl font-bold group-hover:text-bgColor">
               Play
             </span>
           </div>
-          <div className="transition flex gap-3 justify-center items-center text-bgColor font-bold text-lg bg-activeColor cursor-pointer py-[10px] px-5 rounded-[15px] hover:bg-bgLinearSecond hover:text-activeColor">
+          <div className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center text-bgColor font-bold text-lg bg-activeColor cursor-pointer py-[10px] px-5 rounded-[15px] hover:bg-bgLinearSecond hover:text-activeColor">
             Add to playlist
           </div>
         </div>

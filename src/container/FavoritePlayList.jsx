@@ -40,7 +40,7 @@ const FavoritePlayList = () => {
         }}
         spaceBetween={30}
         autoplay={{
-          delay: 2500,
+          delay: 3500,
           disableOnInteraction: false,
         }}
         loop={true}

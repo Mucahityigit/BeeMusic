@@ -3,5 +3,19 @@
   margin: 0;
   padding: 0;
 }
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap");
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px; /* Çubuğun genişliği */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d35400; /* Çubuğun rengi */
+  border-radius: 2px; /* Kenar yuvarlaklığı */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #b3b3b3; /* Çubuğun arka plan rengi */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

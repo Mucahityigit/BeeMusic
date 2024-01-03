@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainArea from "../container/MainArea";
 import LastListened from "../container/LastListened";
 

@@ -12,7 +12,7 @@ import { PiMusicNotesPlusFill } from "react-icons/pi";
 import "../App.css";
 const SideBar = () => {
   return (
-    <div className="fixed w-[14%] h-[100vh] bg-bgSideGradient p-4">
+    <div className="fixed w-[14%] h-[100vh] bg-bgColor p-4">
       <div className="flex items-center cursor-pointer">
         <img src={BeeMusicLogo} alt="logo" className="w-[70px] h-[70px]" />
         <span className="text-[24px] text-passiveColor">BeeMusic</span>

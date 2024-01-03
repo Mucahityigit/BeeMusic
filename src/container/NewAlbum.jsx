@@ -1,11 +1,17 @@
-import React from "react";
-import newAlbum from "../assets/album.png";
+import React, { useEffect, useState } from "react";
+// import newAlbum from "../assets/album.png";
 import { FaPlay } from "react-icons/fa";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
-
+import apiClient from "../spotify";
 import "../App.css";
 
 const NewAlbumComp = () => {
+  const [newAlbum, setNewAlbum] = useState([]);
+  useEffect(() => {
+    apiClient
+      .get(`browse/new-releases`)
+      .then((response) => console.log(response));
+  }, []);
   return (
     <div className="flex gap-5 pt-5 pb-10">
       <div className="relative w-[50%] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">

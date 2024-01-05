@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/BeeMusicLogo.png";
 import { loginEndpoint, setClientToken } from "../spotify";
+import { useDispatch } from "react-redux";
+import { setToken } from "../redux/tokenSlice";
 const Login = () => {
-  const [token, setToken] = useState("");
+  const [currentlyToken, setCurrentlyToken] = useState("");
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const token = window.localStorage.getItem("token");
+  const getToken = () => {
+    // const token = window.localStorage.getItem("token");
     const hash = window.location.hash;
-    if (!token && hash) {
-      const _token = hash.split("&")[0].split("=")[1];
-      window.localStorage.setItem("token", _token);
-      setToken(_token);
-      setClientToken(_token);
-    } else {
-      setToken(token);
-      setClientToken(token);
-    }
+    window.location.hash = "";
+    // if (!token && hash) {
+    const _token = hash.split("&")[0].split("=")[1];
+    // window.localStorage.setItem("token", _token);
+    setCurrentlyToken(_token);
+    setClientToken(_token);
+    dispatch(setToken(_token));
+    // } else {
+    //   setCurrentlyToken(token);
+    //   setClientToken(token);
+    //   dispatch(setToken(token));
+    // }
+  };
+  useEffect(() => {
+    getToken();
   }, []);
+
   return (
     <div className="flex flex-col gap-5 justify-center items-center w-full h-[100vh] bg-bgColor">
       <img className="w-[200px] h-[200px]" src={logo} alt="" />

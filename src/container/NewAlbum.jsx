@@ -2,55 +2,71 @@ import React, { useEffect, useState } from "react";
 // import newAlbum from "../assets/album.png";
 import { FaPlay } from "react-icons/fa";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
-import apiClient from "../spotify";
 import "../App.css";
 import Loading from "../components/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { getNewReleasesAlbum } from "../redux/albumSlice";
+import { getArtistById, setArtistID } from "../redux/artistSlice";
+import { format } from 'date-fns';
 
 const NewAlbumComp = () => {
+  const dispatch = useDispatch();
+  const {newReleasesAlbum} = useSelector(state => state.album)
+  const {artistId,artist} = useSelector(state => state.artist)
   const [isLoading, setIsLoading] = useState(true);
-  const [newAlbum, setNewAlbum] = useState([]);
-  const [artist, setArtist] = useState([]);
-  const [artistID, setArtistID] = useState();
+
+  const formatDate  = (dateStr)=>{
+    return format(new Date(dateStr), "MMMM dd, yyyy");
+  }
+
   const fetchData = async () => {
     try {
-      const response = await apiClient.get(`browse/new-releases`);
-      setNewAlbum(response.data.albums.items[0]);
-      setArtistID(response.data.albums.items[0].artists[0].id);
+      dispatch(getNewReleasesAlbum());
     } catch (error) {
       console.error("Veri alınamadı:", error);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
-  useEffect(() => {
-    if (Object.keys(newAlbum).length > 0 && artistID) {
-      apiClient.get(`artists/${artistID}`).then((response) => {
-        setArtist(response.data);
-        setIsLoading(false); // Her iki veri de yüklendiğinde isLoading'i false yap
-      });
-    }
-  }, [newAlbum, artistID]);
 
-  console.log(newAlbum);
-  console.log(artist);
+  useEffect(() => {
+    if (Object.keys(newReleasesAlbum).length > 0) {
+      const artistId = newReleasesAlbum.artists[0].id;
+      dispatch(setArtistID(artistId));
+    }
+  }, [newReleasesAlbum, dispatch]);
+
+  useEffect(() => {
+    if (Object.keys(newReleasesAlbum).length > 0 && artistId) {
+      dispatch(getArtistById(artistId))
+    }
+  }, [newReleasesAlbum,artistId,dispatch]);
+  
+  useEffect(() => {
+    if (Object.keys(newReleasesAlbum).length > 0 && Object.keys(artist).length > 0) {
+      setIsLoading(false); // Her iki veri de yüklendiğinde isLoading'i false yap
+    }
+  }, [newReleasesAlbum,artist]);
+
   if (isLoading) {
     return <Loading />;
   } else {
     return (
-      <div className="flex gap-5 pt-5 pb-10">
+      <div className="flex gap-10 pt-5 pb-10">
         <div className="relative w-[50%] h-[400px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
           <MdFavoriteBorder className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(255,255,255,.2)] rounded-lg backdrop-blur-sm text-activeColor cursor-pointer transition " />
           {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
           <img
             className="w-[100%] h-[100%] rounded-[30px] object-cover object-left-top "
-            src={newAlbum.images[0].url}
+            src={newReleasesAlbum.images[0].url}
             alt=""
           />
         </div>
         <div className="flex flex-col justify-center gap-7">
           <h1 className="text-[2.5em] text-activeColor font-bold">
-            {newAlbum?.name}
+            {newReleasesAlbum?.name}
           </h1>
           <div className="flex items-center gap-3">
             <div className="flex justify-center items-center gap-4 py-3 px-4 bg-bgGradient rounded-[20px]">
@@ -75,8 +91,8 @@ const NewAlbumComp = () => {
                 Album Info
               </div>
               <div className="transiton text-xl text-activeColor font-bold">
-                {newAlbum.total_tracks} Tracks |{" "}
-                {newAlbum.release_date.split("-")[0]}
+                {newReleasesAlbum.total_tracks} Tracks |{" "}
+                {newReleasesAlbum.release_date.split("-")[0]}
               </div>
             </div>
           </div>
@@ -91,7 +107,7 @@ const NewAlbumComp = () => {
             </div>
             <div className="text-xl font-bold text-activeColor">
               {" "}
-              2 Weeks ago
+              {formatDate(newReleasesAlbum.release_date)}
             </div>
           </div>
           <div className="flex gap-4">

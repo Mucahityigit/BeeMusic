@@ -1,6 +1,6 @@
 import React from "react";
 import LastCard from "../components/LastCard";
-import AlbumCard from "../components/AlbumCard";
+import AlbumCard from "../components/MultiPurposeCard";
 const LastListened = () => {
   return (
     <div className="fixed flex flex-col right-0 p-4 bg-bgColor w-[17%] h-[100vh]">

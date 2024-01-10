@@ -11,7 +11,7 @@ import { getFavoritePlaylists } from "../redux/playlistSlice";
 import Loading from "../components/Loading";
 const FavoritePlayList = () => {
   const dispatch = useDispatch();
-  const {favoritePlaylists} = useSelector(state => state.playlist);
+  const { favoritePlaylists } = useSelector((state) => state.playlist);
   const [isLoading, setIsLoading] = useState(true);
 
   const count = [
@@ -19,17 +19,15 @@ const FavoritePlayList = () => {
     8, 9,
   ];
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getFavoritePlaylists());
-  },[dispatch])
+  }, [dispatch]);
 
-  useEffect(()=>{
-    if(Object.keys(favoritePlaylists).length > 0 ){
-      setIsLoading(false)
+  useEffect(() => {
+    if (Object.keys(favoritePlaylists).length > 0) {
+      setIsLoading(false);
     }
-  },[favoritePlaylists])
-
-  console.log(favoritePlaylists)
+  }, [favoritePlaylists]);
 
   if (isLoading) {
     return <Loading />;
@@ -69,15 +67,15 @@ const FavoritePlayList = () => {
           loop={true}
           modules={[Autoplay]}
         >
-          {favoritePlaylists?.map((playlist) => ( 
-                  <SwiperSlide key={playlist.id}>
-                    <PlaylistCard data={playlist} />
-                  </SwiperSlide>
-                ))}
+          {favoritePlaylists?.map((playlist) => (
+            <SwiperSlide key={playlist.id}>
+              <PlaylistCard data={playlist} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     );
- }
+  }
 };
 
 export default FavoritePlayList;

@@ -36,7 +36,6 @@ const FavoriteArtists = () => {
           <div className="text-activeColor text-2xl font-bold">
             Favorite Artists
           </div>
-          <div className="text-passiveColor text-sm ">See All</div>
         </div>
         <Swiper
           breakpoints={{

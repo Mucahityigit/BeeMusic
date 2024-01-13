@@ -5,6 +5,7 @@ import FavoriteArtists from "./FavoriteArtists";
 import FavoritePlayList from "./FavoritePlayList";
 import Trending from "./TrendAlbum";
 import RecommendedTrends from "./RecommendedTrends";
+import Player from "../MusicPlayer/Player";
 
 const MainArea = () => {
   return (
@@ -16,6 +17,7 @@ const MainArea = () => {
         <Trending />
         <RecommendedTrends />
       </div>
+      <Player />
     </div>
   );
 };

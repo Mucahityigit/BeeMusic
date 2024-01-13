@@ -3,9 +3,8 @@ import "./App.css";
 import rootes from "./routes/Index";
 import { useSelector } from "react-redux";
 import Login from "./auth/login";
-import { useEffect, useState } from "react";
-function App() {
 
+function App() {
   const { token } = useSelector((state) => state.token);
 
   return (

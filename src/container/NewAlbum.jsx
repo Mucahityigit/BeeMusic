@@ -7,17 +7,13 @@ import Loading from "../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { getNewReleasesAlbum } from "../redux/albumSlice";
 import { getArtistById, setArtistID } from "../redux/artistSlice";
-import { format } from 'date-fns';
+import { formatDate } from "../utils/functions";
 
 const NewAlbumComp = () => {
   const dispatch = useDispatch();
-  const {newReleasesAlbum} = useSelector(state => state.album)
-  const {artistId,artist} = useSelector(state => state.artist)
+  const { newReleasesAlbum } = useSelector((state) => state.album);
+  const { artistId, artist } = useSelector((state) => state.artist);
   const [isLoading, setIsLoading] = useState(true);
-
-  const formatDate  = (dateStr)=>{
-    return format(new Date(dateStr), "MMMM dd, yyyy");
-  }
 
   const fetchData = async () => {
     try {
@@ -40,15 +36,18 @@ const NewAlbumComp = () => {
 
   useEffect(() => {
     if (Object.keys(newReleasesAlbum).length > 0 && artistId) {
-      dispatch(getArtistById(artistId))
+      dispatch(getArtistById(artistId));
     }
-  }, [newReleasesAlbum,artistId,dispatch]);
-  
+  }, [newReleasesAlbum, artistId, dispatch]);
+
   useEffect(() => {
-    if (Object.keys(newReleasesAlbum).length > 0 && Object.keys(artist).length > 0) {
+    if (
+      Object.keys(newReleasesAlbum).length > 0 &&
+      Object.keys(artist).length > 0
+    ) {
       setIsLoading(false); // Her iki veri de yüklendiğinde isLoading'i false yap
     }
-  }, [newReleasesAlbum,artist]);
+  }, [newReleasesAlbum, artist]);
 
   if (isLoading) {
     return <Loading />;

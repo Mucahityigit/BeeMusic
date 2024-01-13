@@ -38,7 +38,6 @@ const FavoritePlayList = () => {
           <div className="text-activeColor text-2xl font-bold">
             Favorite Playlists
           </div>
-          <div className="text-passiveColor text-sm ">See All</div>
         </div>
         <Swiper
           breakpoints={{

@@ -1,22 +1,32 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsPlaying } from "../redux/playerSlice";
 
 const Player = () => {
+  const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const ref = useRef(null);
   // eslint-disable-next-line no-unused-expressions
-  if (ref.current) {
-    if (isPlaying) {
-      ref.current.play();
-    } else {
-      ref.current.pause();
-    }
-  }
+
+  const onEnded = () => {
+    dispatch(setIsPlaying(false));
+  };
+
   useEffect(() => {
+    if (Object.keys(activeSong).length > 0) {
+      if (ref.current) {
+        if (isPlaying) {
+          ref.current.play();
+        } else {
+          ref.current.pause();
+        }
+      }
+    }
+
     console.log(activeSong);
-  }, [activeSong]);
+  }, [activeSong, isPlaying]);
 
   // useEffect(() => {
   //   ref.current.volume = volume;
@@ -31,7 +41,7 @@ const Player = () => {
       src={activeSong ? activeSong.preview_url : undefined}
       ref={ref}
       // loop={repeat}
-      // onEnded={onEnded}
+      onEnded={onEnded}
       // onTimeUpdate={onTimeUpdate}
       // onLoadedData={onLoadedData}
     />

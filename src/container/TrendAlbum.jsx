@@ -8,12 +8,24 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import { formatDate } from "../utils/functions";
 import { getListenedAlbum } from "../redux/albumSlice";
+import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
 const TrendAlbum = () => {
   const dispatch = useDispatch();
   const { listenedAlbum, listenedAlbumID } = useSelector(
     (state) => state.album
   );
   const [isLoading, setIsLoading] = useState(true);
+
+  const selectActiveSong = (data, track, index, value) => {
+    dispatch(setActiveSong({ data, track, index }));
+    dispatch(setIsPlaying(value));
+  };
+
+  const getRandomTrack = () => {
+    const index = Math.floor(Math.random() * listenedAlbum.tracks.items.length);
+    const track = listenedAlbum.tracks.items[index];
+    selectActiveSong(listenedAlbum, track, index, true);
+  };
 
   useEffect(() => {
     dispatch(getListenedAlbum(listenedAlbumID));
@@ -68,7 +80,10 @@ const TrendAlbum = () => {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="transition-all ease-in-out duration-500 flex gap-3 justify-center items-center bg-bgLinearSecond py-[8px] px-4 rounded-[15px] cursor-pointer group hover:bg-activeColor">
+              <div
+                className="transition-all ease-in-out duration-500 flex gap-3 justify-center items-center bg-bgLinearSecond py-[8px] px-4 rounded-[15px] cursor-pointer group hover:bg-activeColor"
+                onClick={getRandomTrack}
+              >
                 <FaPlay className="transition-all ease-in-out duration-500 text-activeColor text-[20px] group-hover:text-bgColor" />
                 <span className="transition-all ease-in-out duration-500  text-activeColor text-md font-bold group-hover:text-bgColor">
                   Play
@@ -79,7 +94,13 @@ const TrendAlbum = () => {
         </div>
         <div className="flex flex-col max-h-[432px] overflow-y-scroll  custom-scrollbar">
           {listenedAlbum?.tracks.items.map((track, index) => (
-            <SongCard key={track.id} data={track} index={index} />
+            <SongCard
+              key={track.id}
+              data={listenedAlbum}
+              track={track}
+              index={index}
+              selectActiveSong={selectActiveSong}
+            />
           ))}
         </div>
       </div>

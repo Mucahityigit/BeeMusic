@@ -8,8 +8,8 @@ const PlaybackBar = ({ value, min, max, onInput }) => {
         type="range"
         step="any"
         value={value}
-        min={min}
-        max={max}
+        min={0}
+        max={163124}
         onInput={onInput}
         className="md:block w-24 md:w-56 2xl:w-full h-1 mx-4 2xl:mx-6 rounded-lg"
       />

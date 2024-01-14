@@ -3,7 +3,7 @@ import "../App.css";
 import NewAlbum from "./NewAlbum";
 import FavoriteArtists from "./FavoriteArtists";
 import FavoritePlayList from "./FavoritePlayList";
-import Trending from "./TrendAlbum";
+import TrendAlbum from "./TrendAlbum";
 import RecommendedTrends from "./RecommendedTrends";
 import Player from "../MusicPlayer/Player";
 
@@ -14,7 +14,7 @@ const MainArea = () => {
       <FavoriteArtists />
       <FavoritePlayList />
       <div className="flex gap-11">
-        <Trending />
+        <TrendAlbum />
         <RecommendedTrends />
       </div>
       <Player />

@@ -5,7 +5,7 @@ export const formatDate = (dateStr) => {
   return format(new Date(dateStr), "MMMM dd, yyyy");
 };
 
-export function millisecondToFormat(millisecond) {
+export const millisecondToFormat = (millisecond) => {
   // Dışarıdan gelen milisaniyeyi kullanarak bir Date nesnesi oluştur
   var time = new Date(millisecond);
 
@@ -24,4 +24,4 @@ export function millisecondToFormat(millisecond) {
   // Formatı oluştur
   var format = minute + ":" + second;
   return format;
-}
+};

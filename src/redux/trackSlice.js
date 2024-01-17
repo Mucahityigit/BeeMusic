@@ -6,6 +6,7 @@ const initialState = {
   track: [],
   allTimeTopTracks: {},
   monthlyTopTracks: {},
+  artistTopTracks: {},
 };
 
 export const getAllTimeTopTracks = createAsyncThunk(
@@ -25,6 +26,16 @@ export const getMonthlyTopTracks = createAsyncThunk(
   }
 );
 
+export const getArtistTopTracks = createAsyncThunk(
+  "getartisttoptracks",
+  async (artistID) => {
+    const response = await apiClient.get(
+      `artists/${artistID}/top-tracks?market=TR`
+    );
+    return response.data.tracks;
+  }
+);
+
 export const trackSlice = createSlice({
   name: "track",
   initialState,
@@ -36,6 +47,9 @@ export const trackSlice = createSlice({
       })
       .addCase(getMonthlyTopTracks.fulfilled, (state, action) => {
         state.monthlyTopTracks = action.payload;
+      })
+      .addCase(getArtistTopTracks.fulfilled, (state, action) => {
+        state.artistTopTracks = action.payload;
       });
   },
 });

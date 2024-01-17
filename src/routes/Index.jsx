@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import MainLayout from "../layout/MainLayout";
+import Artist from "../pages/Artist";
 
 const rootes = createBrowserRouter([
   {
@@ -11,10 +12,10 @@ const rootes = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      // {
-      //   path: "chatpage",
-      //   element: <ChatPage />,
-      // },
+      {
+        path: "/artist/:artistID",
+        element: <Artist />,
+      },
     ],
   },
   // {

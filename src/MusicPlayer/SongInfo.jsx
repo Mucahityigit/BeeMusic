@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdFavoriteBorder } from "react-icons/md";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
 
 const SongInfo = ({ isPlaying, activeSong }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,13 +27,14 @@ const SongInfo = ({ isPlaying, activeSong }) => {
           <div className="text-sm text-activeColor">{activeSong?.name}</div>
           <div className="text-sm text-passiveColor">
             {activeSong?.artists.map((artist, index) => (
-              <span
+              <Link
+                to={`/artist/${artist.id}`}
                 className=" hover:text-bgLinearFirst cursor-pointer"
                 key={index}
               >
                 {artist.name}
                 {index !== activeSong.artists.length - 1 && " , "}
-              </span>
+              </Link>
             ))}
             {/* {activeSong?.artists[0].name} */}
           </div>

@@ -14,11 +14,6 @@ const FavoritePlayList = () => {
   const { favoritePlaylists } = useSelector((state) => state.playlist);
   const [isLoading, setIsLoading] = useState(true);
 
-  const count = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 7, 8, 9, 7, 8, 9, 7, 8, 9, 7, 8, 9, 7, 8, 9, 7,
-    8, 9,
-  ];
-
   useEffect(() => {
     dispatch(getFavoritePlaylists());
   }, [dispatch]);
@@ -68,6 +63,7 @@ const FavoritePlayList = () => {
         >
           {favoritePlaylists?.map((playlist) => (
             <SwiperSlide key={playlist.id}>
+              {/* Bu kısımda değişiklik yaptın . Unutma, Hata varsa burayı kontrol et !!!!!!!!!!!!! */}
               <PlaylistCard data={playlist} />
             </SwiperSlide>
           ))}

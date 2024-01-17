@@ -11,6 +11,7 @@ import MultiPurposeCard from "../components/MultiPurposeCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteArtists } from "../redux/artistSlice";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
 
 const FavoriteArtists = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,9 @@ const FavoriteArtists = () => {
         >
           {favoriteArtists?.map((artist) => (
             <SwiperSlide key={artist.id}>
-              <MultiPurposeCard data={artist} />
+              <Link to={`./artist/${artist.id}`}>
+                <MultiPurposeCard data={artist} />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -9,17 +9,22 @@ import {
 import { millisecondToFormat } from "../utils/functions";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPlaying } from "../redux/playerSlice";
+import { Link } from "react-router-dom";
 
 const SongCard = ({ data, track, selectActiveSong, index }) => {
   const dispatch = useDispatch();
   const { isPlaying, activeSong } = useSelector((state) => state.player);
 
+  console.log(track);
+
   return (
     <div
       className={` ${
-        isPlaying && track.id === activeSong.id ? "bg-[#28334A]" : ""
-      }  flex flex-row items-center gap-2 text-passiveColor p-4 mr-1 pr-3 group hover:bg-[#28334A] rounded-lg `}
-      onClick={() => selectActiveSong(data.tracks.items, track, index, true)}
+        isPlaying && track.id === activeSong.id
+          ? "bg-[rgba(255,255,255,.1)]"
+          : ""
+      }  flex flex-row items-center gap-2 text-passiveColor p-4 mr-1 pr-3 group hover:bg-[rgba(255,255,255,.1)] rounded-lg `}
+      onDoubleClick={() => selectActiveSong(data, track, index, true)}
     >
       <div className=" w-[20px] text-passiveColor">{index + 1}</div>
       <div className="flex flex-auto flex-col">
@@ -36,13 +41,14 @@ const SongCard = ({ data, track, selectActiveSong, index }) => {
         </div>
         <div className="text-sm">
           {track?.artists.map((artist, index) => (
-            <span
+            <Link
+              to={`/artist/${artist.id}`}
               className=" hover:text-bgLinearFirst cursor-pointer"
               key={index}
             >
               {artist.name}
               {index !== track.artists.length - 1 && " , "}
-            </span>
+            </Link>
           ))}
         </div>
       </div>
@@ -58,9 +64,7 @@ const SongCard = ({ data, track, selectActiveSong, index }) => {
         ) : (
           <GoPlay
             className="transition text-[22px] hover:text-bgLinearFirst cursor-pointer"
-            onClick={() =>
-              selectActiveSong(data.tracks.items, track, index, true)
-            }
+            onClick={() => selectActiveSong(data, track, index, true)}
           />
         )}
         <MdFavoriteBorder className="transition text-[22px] hover:text-bgLinearFirst cursor-pointer" />

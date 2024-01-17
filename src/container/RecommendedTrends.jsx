@@ -15,6 +15,9 @@ const RecommendedTrends = () => {
     dispatch(getMonthlyTopTracks());
   }, [dispatch]);
 
+  console.log(allTimeTopTracks);
+  console.log(monthlyTopTracks);
+
   useEffect(() => {
     if (
       Object.keys(allTimeTopTracks).length > 0 &&

@@ -3,17 +3,24 @@ import apiClient from "../spotify";
 
 const initialState = {
   artistId: "",
-  artist:[],
-  favoriteArtists:{}
+  artist: [],
+  favoriteArtists: {},
+  artistRelatedArtists: [],
 };
 
-
 export const getArtistById = createAsyncThunk(
-    "getartistbyid",
-    async (artistID) => {
-      const response = await apiClient.get(`artists/${artistID}`);
-      return response.data;
-    }
+  "getartistbyid",
+  async (artistID) => {
+    const response = await apiClient.get(`artists/${artistID}`);
+    return response.data;
+  }
+);
+export const getArtistRelatedArtists = createAsyncThunk(
+  "getartistrelatedartists",
+  async (artistID) => {
+    const response = await apiClient.get(`artists/${artistID}/related-artists`);
+    return response.data.artists;
+  }
 );
 export const getFavoriteArtists = createAsyncThunk(
   "getfavoriteartists",
@@ -22,7 +29,6 @@ export const getFavoriteArtists = createAsyncThunk(
     return response.data.items;
   }
 );
-
 
 export const artistSlice = createSlice({
   name: "artist",
@@ -40,6 +46,9 @@ export const artistSlice = createSlice({
       .addCase(getFavoriteArtists.fulfilled, (state, action) => {
         state.favoriteArtists = action.payload;
       })
+      .addCase(getArtistRelatedArtists.fulfilled, (state, action) => {
+        state.artistRelatedArtists = action.payload;
+      });
   },
 });
 

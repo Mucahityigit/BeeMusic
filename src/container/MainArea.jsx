@@ -5,7 +5,6 @@ import FavoriteArtists from "./FavoriteArtists";
 import FavoritePlayList from "./FavoritePlayList";
 import TrendAlbum from "./TrendAlbum";
 import RecommendedTrends from "./RecommendedTrends";
-import Player from "../MusicPlayer/Player";
 
 const MainArea = () => {
   return (
@@ -15,9 +14,8 @@ const MainArea = () => {
       <FavoritePlayList />
       <div className="flex gap-11">
         <TrendAlbum />
-        <RecommendedTrends />
+        {/* <RecommendedTrends /> */}
       </div>
-      <Player />
     </div>
   );
 };

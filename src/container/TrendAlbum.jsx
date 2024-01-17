@@ -96,7 +96,7 @@ const TrendAlbum = () => {
           {listenedAlbum?.tracks.items.map((track, index) => (
             <SongCard
               key={track.id}
-              data={listenedAlbum}
+              data={listenedAlbum.tracks.items}
               track={track}
               index={index}
               selectActiveSong={selectActiveSong}

@@ -5,6 +5,7 @@ const initialState = {
   newReleasesAlbum: [],
   listenedAlbumID: "",
   listenedAlbum: [],
+  artistAlbums: [],
 };
 
 export const getNewReleasesAlbum = createAsyncThunk(
@@ -23,6 +24,14 @@ export const getListenedAlbum = createAsyncThunk(
   }
 );
 
+export const getArtistAlbums = createAsyncThunk(
+  "getartistalbums",
+  async (id) => {
+    const response = await apiClient.get(`artists/${id}/albums`);
+    return response.data.items;
+  }
+);
+
 export const albumSlice = createSlice({
   name: "album",
   initialState,
@@ -35,6 +44,9 @@ export const albumSlice = createSlice({
       })
       .addCase(getListenedAlbum.fulfilled, (state, action) => {
         state.listenedAlbum = action.payload;
+      })
+      .addCase(getArtistAlbums.fulfilled, (state, action) => {
+        state.artistAlbums = action.payload;
       });
   },
 });

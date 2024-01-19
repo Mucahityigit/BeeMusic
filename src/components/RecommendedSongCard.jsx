@@ -8,6 +8,7 @@ import { GoPlay } from "react-icons/go";
 import { millisecondToFormat } from "../utils/functions";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPlaying } from "../redux/playerSlice";
+import { Link } from "react-router-dom";
 const RecommendedSongCard = ({ data, track, selectActiveSong, index }) => {
   const dispatch = useDispatch();
   const { isPlaying, activeSong } = useSelector((state) => state.player);
@@ -36,16 +37,16 @@ const RecommendedSongCard = ({ data, track, selectActiveSong, index }) => {
           />
         )}
         <div className="flex justify-between px-4 items-center">
-          <div className="text-md text-activeColor font-bold tracking-wider">
+          <Link to={`./track/${track?.id}`} className="text-md text-activeColor font-bold tracking-wider cursor-pointer hover:text-bgLinearFirst">
             {track?.name.substring(0, 30)}
-          </div>
+          </Link>
           <div className="text-md text-passiveColor">
             {millisecondToFormat(track?.duration_ms)}
           </div>
         </div>
-        <div className="text-md text-activeColor px-4 pb-3">
+        <Link to={`./artist/${track?.artists[0].id}`} className="text-md text-activeColor px-4 pb-3 cursor-pointer hover:text-bgLinearFirst">
           {track?.artists[0].name}
-        </div>
+        </Link>
       </div>
     </div>
   );

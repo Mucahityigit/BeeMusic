@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNewReleasesAlbum } from "../redux/albumSlice";
 import { getArtistById, setArtistID } from "../redux/artistSlice";
 import { formatDate } from "../utils/functions";
+import { Link } from "react-router-dom";
 
 const NewAlbumComp = () => {
   const dispatch = useDispatch();
@@ -64,9 +65,11 @@ const NewAlbumComp = () => {
           />
         </div>
         <div className="flex flex-col justify-center gap-7">
-          <h1 className="text-[2.5em] text-activeColor font-bold">
-            {newReleasesAlbum?.name}
-          </h1>
+          <Link to={`/album/${newReleasesAlbum.id}`}>
+            <h1 className="transition-all ease-in-out duration-300 text-[2.5em] text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer">
+              {newReleasesAlbum?.name}
+            </h1>
+          </Link>
           <div className="flex items-center gap-3">
             <div className="flex justify-center items-center gap-4 py-3 px-4 bg-bgGradient rounded-[20px]">
               <div className="w-[50px] h-[50px] rounded-full ">
@@ -80,9 +83,9 @@ const NewAlbumComp = () => {
                 <div className="text-md text-passiveColor font-bold">
                   Artist
                 </div>
-                <div className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearSecond cursor-pointer">
+                <Link to={`/artist/${artist.id}`}className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer">
                   {artist.name}
-                </div>
+                </Link>
               </div>
             </div>
             <div className="flex flex-col justify-center py-3 px-4 bg-bgGradient rounded-[20px]">
@@ -110,12 +113,12 @@ const NewAlbumComp = () => {
             </div>
           </div>
           <div className="flex gap-4">
-            <div className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center bg-bgLinearSecond py-[10px] px-5 rounded-[15px] cursor-pointer group hover:bg-activeColor">
+            <Link to={`./album/${newReleasesAlbum.id}`} className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center bg-bgLinearSecond py-[10px] px-5 rounded-[15px] cursor-pointer group hover:bg-activeColor">
               <FaPlay className="transition text-activeColor text-[26px] group-hover:text-bgColor" />
               <span className="transition text-activeColor text-xl font-bold group-hover:text-bgColor">
                 Play
               </span>
-            </div>
+            </Link>
             <div className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center text-bgColor font-bold text-lg bg-activeColor cursor-pointer py-[10px] px-5 rounded-[15px] hover:bg-bgLinearSecond hover:text-activeColor">
               Add to playlist
             </div>

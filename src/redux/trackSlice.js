@@ -36,6 +36,7 @@ export const getArtistTopTracks = createAsyncThunk(
   }
 );
 
+
 export const trackSlice = createSlice({
   name: "track",
   initialState,
@@ -50,7 +51,8 @@ export const trackSlice = createSlice({
       })
       .addCase(getArtistTopTracks.fulfilled, (state, action) => {
         state.artistTopTracks = action.payload;
-      });
+      })
+      
   },
 });
 

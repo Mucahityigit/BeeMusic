@@ -9,6 +9,7 @@ import Loading from "../components/Loading";
 import { formatDate } from "../utils/functions";
 import { getListenedAlbum } from "../redux/albumSlice";
 import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
+import { Link } from "react-router-dom";
 const TrendAlbum = () => {
   const dispatch = useDispatch();
   const { listenedAlbum, listenedAlbumID } = useSelector(
@@ -55,12 +56,14 @@ const TrendAlbum = () => {
           </div>
           <div className="flex flex-col w-[205px] justify-between gap-5">
             <div className="flex flex-col">
-              <h1 className="text-[1.2em] text-activeColor font-bold">
-                {listenedAlbum?.name}
-              </h1>
-              <div className="transition-all ease-in-out duration-500 text-md font-bold text-bgLinearSecond cursor-pointer hover:text-bgLinearFirst">
+              <Link to={`/album/${listenedAlbum.id}`}>
+                <h1 className="transition-all ease-in-out duration-300 text-[1.2em] text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer">
+                  {listenedAlbum?.name}
+                </h1>
+              </Link>
+              <Link to={`/artist/${listenedAlbum?.artists[0].id}`} className="transition-all ease-in-out duration-500 text-md font-bold text-bgLinearSecond cursor-pointer hover:text-bgLinearFirst">
                 {listenedAlbum?.artists[0].name}
-              </div>
+              </Link>
             </div>
             <div className="flex flex-col gap-2">
               <div className="text-md font-bold text-activeColor">

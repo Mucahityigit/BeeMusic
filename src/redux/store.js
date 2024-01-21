@@ -5,6 +5,7 @@ import artistSlice from "./artistSlice";
 import playlistSlice from "./playlistSlice";
 import trackSlice from "./trackSlice";
 import playerSlice from "./playerSlice";
+import favoriteSlice from "./favoriteSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     playlist: playlistSlice,
     track: trackSlice,
     player: playerSlice,
+    favorite: favoriteSlice,
   },
 });

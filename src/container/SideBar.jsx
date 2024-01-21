@@ -75,12 +75,15 @@ const SideBar = () => {
             Recently Added
           </span>
         </div>
-        <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
+        <Link
+          to="/favorite"
+          className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]"
+        >
           <MdFavorite className="transition text-2xl group-hover:text-bgLinearFirst" />
           <span className="transition group-hover:text-bgLinearFirst">
-            Favorite Songs
+            Favorites
           </span>
-        </div>
+        </Link>
       </div>
       <div className="flex flex-col  gap-3">
         <h4 className="text-sm uppercase px-5 mt-12 text-passiveColor">

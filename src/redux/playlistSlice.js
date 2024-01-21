@@ -3,9 +3,9 @@ import apiClient from "../spotify";
 
 const initialState = {
   playlistId: "",
-  favoritePlaylists:{}
+  favoritePlaylists: {},
+  playlist: [],
 };
-
 
 export const getFavoritePlaylists = createAsyncThunk(
   "getfavoriteplaylists",
@@ -14,7 +14,13 @@ export const getFavoritePlaylists = createAsyncThunk(
     return response.data.playlists.items;
   }
 );
-
+export const getPlaylistById = createAsyncThunk(
+  "getplaylistbyid",
+  async (playlistID) => {
+    const response = await apiClient.get(`playlists/${playlistID}`);
+    return response.data;
+  }
+);
 
 export const playlistSlice = createSlice({
   name: "artist",
@@ -25,6 +31,9 @@ export const playlistSlice = createSlice({
       .addCase(getFavoritePlaylists.fulfilled, (state, action) => {
         state.favoritePlaylists = action.payload;
       })
+      .addCase(getPlaylistById.fulfilled, (state, action) => {
+        state.playlist = action.payload;
+      });
   },
 });
 

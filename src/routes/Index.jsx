@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import MainLayout from "../layout/MainLayout";
 import Artist from "../pages/Artist";
 import Album from "../pages/Album";
+import Favorite from "../pages/Favorite";
 
 const rootes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const rootes = createBrowserRouter([
       {
         path: "/album/:albumID",
         element: <Album />,
+      },
+      {
+        path: "/favorite",
+        element: <Favorite />,
       },
     ],
   },

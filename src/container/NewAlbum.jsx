@@ -55,7 +55,7 @@ const NewAlbumComp = () => {
   } else {
     return (
       <div className="flex gap-10 pt-5 pb-10">
-        <div className="relative w-[50%] h-[400px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
+        <div className="relative w-[40%] h-[400px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
           <MdFavoriteBorder className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(255,255,255,.2)] rounded-lg backdrop-blur-sm text-activeColor cursor-pointer transition " />
           {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
           <img
@@ -83,7 +83,10 @@ const NewAlbumComp = () => {
                 <div className="text-md text-passiveColor font-bold">
                   Artist
                 </div>
-                <Link to={`/artist/${artist.id}`}className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer">
+                <Link
+                  to={`/artist/${artist.id}`}
+                  className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer"
+                >
                   {artist.name}
                 </Link>
               </div>
@@ -113,7 +116,10 @@ const NewAlbumComp = () => {
             </div>
           </div>
           <div className="flex gap-4">
-            <Link to={`./album/${newReleasesAlbum.id}`} className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center bg-bgLinearSecond py-[10px] px-5 rounded-[15px] cursor-pointer group hover:bg-activeColor">
+            <Link
+              to={`./album/${newReleasesAlbum.id}`}
+              className="transition-all ease-in-out duration-300 flex gap-3 justify-center items-center bg-bgLinearSecond py-[10px] px-5 rounded-[15px] cursor-pointer group hover:bg-activeColor"
+            >
               <FaPlay className="transition text-activeColor text-[26px] group-hover:text-bgColor" />
               <span className="transition text-activeColor text-xl font-bold group-hover:text-bgColor">
                 Play

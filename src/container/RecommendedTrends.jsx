@@ -31,7 +31,7 @@ const RecommendedTrends = () => {
     return <Loading />;
   } else {
     return (
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-1 flex-col gap-5">
         <TrendCards data={allTimeTopTracks} title="All Time Trending" />
         <TrendCards data={monthlyTopTracks} title="Monthly Trending For You" />
       </div>

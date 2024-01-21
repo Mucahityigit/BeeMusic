@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { FaPlay } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
+// import { FaPlay } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import SongCard from "../components/SongCard";
 import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
@@ -9,11 +9,12 @@ import Loading from "../components/Loading";
 import { getArtistAlbums, getListenedAlbum } from "../redux/albumSlice";
 import SwiperComp from "../components/SwiperComp";
 import { formatDate } from "../utils/functions";
+import { getArtistRelatedArtists } from "../redux/artistSlice";
 const Artist = () => {
   const { albumID } = useParams();
   const dispatch = useDispatch();
-  // const { artist, artistRelatedArtists } = useSelector((state) => state.artist);
-  const { listenedAlbum,artistAlbums } = useSelector((state) => state.album);
+  const { artistRelatedArtists } = useSelector((state) => state.artist);
+  const { listenedAlbum, artistAlbums } = useSelector((state) => state.album);
   const [isLoading, setIsLoading] = useState(true);
 
   const selectActiveSong = (data, track, index, value) => {
@@ -23,16 +24,17 @@ const Artist = () => {
 
   useEffect(() => {
     dispatch(getListenedAlbum(albumID));
-    dispatch(getArtistAlbums(listenedAlbum.artists[0].id))
-  }, [albumID, dispatch,listenedAlbum]);
+    dispatch(getArtistAlbums(listenedAlbum.artists[0].id));
+    dispatch(getArtistRelatedArtists(listenedAlbum.artists[0].id));
+  }, [dispatch, albumID, listenedAlbum.artists[0].id]);
 
   useEffect(() => {
     if (Object.keys(listenedAlbum).length > 0) {
       setIsLoading(false);
     }
+    console.log(listenedAlbum);
   }, [listenedAlbum]);
 
-  console.log(listenedAlbum);
   if (isLoading) {
     return <Loading />;
   } else {
@@ -50,10 +52,19 @@ const Artist = () => {
               alt=""
             />
           </div>
-          <div className="flex flex-1 flex-col justify-center gap-8">
-            <h1 className="text-[2.5em] text-activeColor font-bold">
-              {listenedAlbum?.name}
-            </h1>
+          <div className="flex flex-1 flex-col max-w-[970px] justify-center gap-4">
+            <div className="flex flex-col">
+              <h1 className="text-[2.5em] text-activeColor font-bold truncate ...">
+                {listenedAlbum?.name}
+              </h1>
+              <Link
+                to={`/artist/${listenedAlbum.artists[0].id}`}
+                className="transition-all ease-in-out duration-300 text-xl text-bgLinearSecond font-bold hover:text-bgLinearFirst cursor-pointer"
+              >
+                {listenedAlbum.artists[0].name}
+              </Link>
+            </div>
+
             <div className="flex items-center gap-3">
               {listenedAlbum?.genres.map((genre, i) => (
                 <div
@@ -98,12 +109,12 @@ const Artist = () => {
             card="album"
             slidesPerView={6}
           />
-          {/* <SwiperComp
+          <SwiperComp
             data={artistRelatedArtists}
-            title="Artist's Related Artists"
+            title={`Recommended for listening to ${listenedAlbum.artists[0].name}`}
             card="multi"
             slidesPerView={8}
-          /> */}
+          />
         </div>
       </div>
     );

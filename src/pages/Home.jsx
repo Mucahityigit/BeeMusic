@@ -25,7 +25,7 @@ const Home = () => {
     return (
       <div className="flex flex-1 bg-bgImage bg-cover pb-16">
         <MainArea />
-        <LastListened />
+        {/* <LastListened /> */}
       </div>
     );
   }

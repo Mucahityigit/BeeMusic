@@ -1,6 +1,5 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa";
-import img1 from "../assets/img1.png";
 
 const AlbumCard = ({ data }) => {
   return (

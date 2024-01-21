@@ -7,12 +7,17 @@ import "swiper/css/pagination";
 import PlaylistCard from "../components/PlaylistCard";
 import "../App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getFavoritePlaylists } from "../redux/playlistSlice";
+import { getFavoritePlaylists, getPlaylistById } from "../redux/playlistSlice";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
 const FavoritePlayList = () => {
   const dispatch = useDispatch();
   const { favoritePlaylists } = useSelector((state) => state.playlist);
   const [isLoading, setIsLoading] = useState(true);
+
+  const setPlaylist = (playlistID) => {
+    dispatch(getPlaylistById(playlistID));
+  };
 
   useEffect(() => {
     dispatch(getFavoritePlaylists());
@@ -28,7 +33,7 @@ const FavoritePlayList = () => {
     return <Loading />;
   } else {
     return (
-      <div className="lg:w-[1260px] sm:w-[640px] xs:w-[320px]">
+      <div className="lg:w-[1600px] md:w-[900px] sm:w-[480px] xs:w-[320px]">
         <div className="flex justify-between items-end py-2 mb-3 border-b border-[rgba(255,255,255,.4)]">
           <div className="text-activeColor text-2xl font-bold">
             Favorite Playlists
@@ -44,12 +49,12 @@ const FavoritePlayList = () => {
               slidesPerView: 2,
               spaceBetween: 30,
             },
-            640: {
+            900: {
               slidesPerView: 3,
               spaceBetween: 30,
             },
-            992: {
-              slidesPerView: 5,
+            1600: {
+              slidesPerView: 6,
               spaceBetween: 30,
             },
           }}
@@ -64,7 +69,9 @@ const FavoritePlayList = () => {
           {favoritePlaylists?.map((playlist) => (
             <SwiperSlide key={playlist.id}>
               {/* Bu kısımda değişiklik yaptın . Unutma, Hata varsa burayı kontrol et !!!!!!!!!!!!! */}
-              <PlaylistCard data={playlist} />
+              <div onClick={() => setPlaylist(playlist.id)}>
+                <PlaylistCard data={playlist} />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

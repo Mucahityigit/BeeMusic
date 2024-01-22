@@ -22,9 +22,10 @@ const PlaylistComp = () => {
   useEffect(() => {
     if (Object.keys(playlist).length > 0) {
       setIsLoading(false);
+      setIsActive(true)
     }
   }, [playlist]);
-  console.log(playlist);
+  
 
   if (isLoading) {
     return null;

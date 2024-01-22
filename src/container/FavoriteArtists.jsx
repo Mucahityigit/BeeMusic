@@ -32,7 +32,7 @@ const FavoriteArtists = () => {
     return <Loading />;
   } else {
     return (
-      <div className="lg:w-[1600px] md:w-[900px] sm:w-[480px] xs:w-[320px]">
+      <div className="lg:w-[1200px] md:w-[700px] sm:w-[480px]  xs:w-[320px]">
         <div className="flex justify-between items-end py-2 mb-3 border-b border-[rgba(255,255,255,.4)]">
           <div className="text-activeColor text-2xl font-bold">
             Favorite Artists
@@ -48,9 +48,9 @@ const FavoriteArtists = () => {
               slidesPerView: 3,
               spaceBetween: 30,
             },
-            900: {
-              slidesPerView: 4,
-              spaceBetween: 30,
+            1200: {
+              slidesPerView: 6,
+              spaceBetween: 50,
             },
             1600: {
               slidesPerView: 8,

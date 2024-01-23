@@ -9,11 +9,14 @@ import { getNewReleasesAlbum } from "../redux/albumSlice";
 import { getArtistById, setArtistID } from "../redux/artistSlice";
 import { formatDate } from "../utils/functions";
 import { Link } from "react-router-dom";
+import { setFavorite } from "../redux/favoriteSlice";
 
 const NewAlbumComp = () => {
   const dispatch = useDispatch();
   const { newReleasesAlbum } = useSelector((state) => state.album);
   const { artistId, artist } = useSelector((state) => state.artist);
+  const { albums } = useSelector((state) => state.favorite);
+  const [favoriteID, setFavoriteID] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
@@ -23,6 +26,17 @@ const NewAlbumComp = () => {
       console.error("Veri alınamadı:", error);
     }
   };
+  const handleFavorite = (data) => {
+    dispatch(setFavorite(data));
+  };
+
+  useEffect(() => {
+    // Eğer favori şarkılar içerisinde track varsa favoriID'yi set et
+    const isFavorite = albums.some(
+      (album) => album.id === newReleasesAlbum?.id
+    );
+    setFavoriteID(isFavorite ? newReleasesAlbum.id : null);
+  }, [albums]);
 
   useEffect(() => {
     fetchData();
@@ -56,8 +70,18 @@ const NewAlbumComp = () => {
     return (
       <div className="flex gap-10 pt-5 pb-10">
         <div className="relative w-[40%] h-[400px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
-          <MdFavoriteBorder className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(255,255,255,.2)] rounded-lg backdrop-blur-sm text-activeColor cursor-pointer transition " />
-          {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
+          {newReleasesAlbum.id === favoriteID ? (
+            <MdFavorite
+              className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-bgLinearFirst cursor-pointer transition "
+              onClick={() => handleFavorite(newReleasesAlbum)}
+            />
+          ) : (
+            <MdFavoriteBorder
+              className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition "
+              onClick={() => handleFavorite(newReleasesAlbum)}
+            />
+          )}
+
           <img
             className="w-[100%] h-[100%] rounded-[30px] object-cover object-left-top "
             src={newReleasesAlbum.images[0].url}

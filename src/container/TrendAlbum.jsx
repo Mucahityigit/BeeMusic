@@ -10,17 +10,29 @@ import { formatDate } from "../utils/functions";
 import { getListenedAlbum } from "../redux/albumSlice";
 import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
 import { Link } from "react-router-dom";
+import { setFavorite } from "../redux/favoriteSlice";
 const TrendAlbum = () => {
   const dispatch = useDispatch();
   const { listenedAlbum, listenedAlbumID } = useSelector(
     (state) => state.album
   );
+  const { albums } = useSelector((state) => state.favorite);
+  const [favoriteID, setFavoriteID] = useState();
+
   const [isLoading, setIsLoading] = useState(true);
 
   const selectActiveSong = (data, track, index, value) => {
     dispatch(setActiveSong({ data, track, index }));
     dispatch(setIsPlaying(value));
   };
+  const handleFavorite = (data) => {
+    dispatch(setFavorite(data));
+  };
+  useEffect(() => {
+    // Eğer favori şarkılar içerisinde track varsa favoriID'yi set et
+    const isFavorite = albums.some((album) => album.id === listenedAlbum?.id);
+    setFavoriteID(isFavorite ? listenedAlbum.id : null);
+  }, [albums]);
 
   const getRandomTrack = () => {
     const index = Math.floor(Math.random() * listenedAlbum.tracks.items.length);
@@ -46,8 +58,17 @@ const TrendAlbum = () => {
       <div className="flex flex-col bg-bgColor pt-3 pb-7 pl-5 pr-4 rounded-[30px]">
         <div className="flex gap-7 pt-5 pb-7 mb-3 border-b border-[rgba(255,255,255,.2)]">
           <div className="relative w-[200px] h-[220px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
-            <MdFavoriteBorder className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(255,255,255,.2)] rounded-md backdrop-blur-sm text-activeColor cursor-pointer transition " />
-            {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
+            {listenedAlbum.id === favoriteID ? (
+              <MdFavorite
+                className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer transition z-50"
+                onClick={() => handleFavorite(listenedAlbum)}
+              />
+            ) : (
+              <MdFavoriteBorder
+                className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition z-50"
+                onClick={() => handleFavorite(listenedAlbum)}
+              />
+            )}
             <img
               className="w-[100%] h-[100%] rounded-[20px]"
               src={listenedAlbum?.images[1].url}
@@ -61,7 +82,10 @@ const TrendAlbum = () => {
                   {listenedAlbum?.name}
                 </h1>
               </Link>
-              <Link to={`/artist/${listenedAlbum?.artists[0].id}`} className="transition-all ease-in-out duration-500 text-md font-bold text-bgLinearSecond cursor-pointer hover:text-bgLinearFirst">
+              <Link
+                to={`/artist/${listenedAlbum?.artists[0].id}`}
+                className="transition-all ease-in-out duration-500 text-md font-bold text-bgLinearSecond cursor-pointer hover:text-bgLinearFirst"
+              >
                 {listenedAlbum?.artists[0].name}
               </Link>
             </div>

@@ -21,7 +21,7 @@ const TrendCards = ({ data, title }) => {
       <div className="flex py-2  border-b border-[rgba(255,255,255,.4)]">
         <div className="text-activeColor text-3xl font-bold">{title}</div>
       </div>
-      <div className="flex w-[750px]">
+      <div className="flex lg:w-[1100px]">
         <Swiper
           breakpoints={{
             320: {
@@ -32,13 +32,13 @@ const TrendCards = ({ data, title }) => {
               slidesPerView: 2,
               spaceBetween: 30,
             },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            992: {
+            1100: {
               slidesPerView: 3,
               spaceBetween: 30,
+            },
+            1600: {
+              slidesPerView: 4,
+              spaceBetween: 50,
             },
           }}
           spaceBetween={30}

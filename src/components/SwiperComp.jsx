@@ -7,8 +7,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AlbumCard from "./AlbumCard";
 import { Link } from "react-router-dom";
+import RecommendedSongCard from "./RecommendedSongCard";
+import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
+import { useDispatch } from "react-redux";
+import PlaylistCard from "./PlaylistCard";
 
 const SwiperComp = ({ data, title, card, slidesPerView }) => {
+  const dispatch = useDispatch();
+  const selectActiveSong = (data, track, index, value) => {
+    dispatch(setActiveSong({ data, track, index }));
+    dispatch(setIsPlaying(value));
+  };
   console.log(data);
   return (
     <div className="lg:w-[1600px] sm:w-[640px] xs:w-[320px]">
@@ -42,9 +51,38 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
         loop={true}
         modules={[Autoplay]}
       >
-        {data?.map((value) => (
+        {data?.map((value, index) => (
           <SwiperSlide key={value.id}>
-            {card == "multi" ? (
+            {(() => {
+              switch (card) {
+                case "multi":
+                  return (
+                    <Link to={`/artist/${value.id}`}>
+                      <MultiPurposeCard data={value} />
+                    </Link>
+                  );
+                case "song":
+                  return (
+                    <RecommendedSongCard
+                      data={data}
+                      track={value}
+                      selectActiveSong={selectActiveSong}
+                      index={index}
+                    />
+                  );
+                case "playlist":
+                  return <PlaylistCard data={value} />;
+                case "album":
+                  return (
+                    <Link to={`/album/${value.id}`}>
+                      <AlbumCard data={value} />
+                    </Link>
+                  );
+                default:
+                  return null;
+              }
+            })()}
+            {/* {card == "multi" ? (
               <Link to={`/artist/${value.id}`}>
                 <MultiPurposeCard data={value} />
               </Link>
@@ -52,7 +90,7 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
               <Link to={`/album/${value.id}`}>
                 <AlbumCard data={value} />
               </Link>
-            )}
+            )} */}
           </SwiperSlide>
         ))}
       </Swiper>

@@ -10,6 +10,7 @@ import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
 import Loading from "../components/Loading";
 import { getArtistAlbums } from "../redux/albumSlice";
 import SwiperComp from "../components/SwiperComp";
+import { setFavorite } from "../redux/favoriteSlice";
 const Artist = () => {
   const { artistID } = useParams();
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ const Artist = () => {
   const selectActiveSong = (data, track, index, value) => {
     dispatch(setActiveSong({ data, track, index }));
     dispatch(setIsPlaying(value));
+  };
+  const handleFavorite = (data) => {
+    dispatch(setFavorite(data));
   };
 
   useEffect(() => {
@@ -46,7 +50,10 @@ const Artist = () => {
           <div
             className={`relative w-[600px] h-[630px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]`}
           >
-            <MdFavoriteBorder className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(255,255,255,.2)] rounded-lg backdrop-blur-sm text-activeColor cursor-pointer transition " />
+            <MdFavoriteBorder
+              className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition "
+              onClick={() => handleFavorite(artist)}
+            />
             {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
             <img
               className="w-[100%] h-[100%] rounded-[30px] object-cover object-left-top "

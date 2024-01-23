@@ -10,14 +10,14 @@ import { millisecondToFormat } from "../utils/functions";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPlaying } from "../redux/playerSlice";
 import { Link } from "react-router-dom";
-import { setFavoriteSongs } from "../redux/favoriteSlice";
+import { setFavorite } from "../redux/favoriteSlice";
 
 const SongCard = ({ data, track, selectActiveSong, index }) => {
   const dispatch = useDispatch();
   const { isPlaying, activeSong } = useSelector((state) => state.player);
 
-  const setFavoriteSong = (data) => {
-    dispatch(setFavoriteSongs(data));
+  const handleFavorite = (data) => {
+    dispatch(setFavorite(data));
   };
 
   console.log(track);
@@ -74,7 +74,7 @@ const SongCard = ({ data, track, selectActiveSong, index }) => {
         )}
         <MdFavoriteBorder
           className="transition text-[22px] hover:text-bgLinearFirst cursor-pointer"
-          onClick={() => setFavoriteSong(track)}
+          onClick={() => handleFavorite(track)}
         />
       </div>
     </div>

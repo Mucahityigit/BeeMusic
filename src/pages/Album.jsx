@@ -11,7 +11,7 @@ import SwiperComp from "../components/SwiperComp";
 import { formatDate } from "../utils/functions";
 import { getArtistRelatedArtists } from "../redux/artistSlice";
 import { setFavorite } from "../redux/favoriteSlice";
-const Artist = () => {
+const Album = () => {
   const { albumID } = useParams();
   const dispatch = useDispatch();
   const { artistRelatedArtists } = useSelector((state) => state.artist);
@@ -27,11 +27,12 @@ const Artist = () => {
   const handleFavorite = (data) => {
     dispatch(setFavorite(data));
   };
+
   useEffect(() => {
     // Eğer favori şarkılar içerisinde track varsa favoriID'yi set et
     const isFavorite = albums.some((album) => album.id === listenedAlbum?.id);
     setFavoriteID(isFavorite ? listenedAlbum.id : null);
-  }, [albums]);
+  }, [albums, listenedAlbum]);
 
   useEffect(() => {
     dispatch(getListenedAlbum(albumID));
@@ -142,4 +143,4 @@ const Artist = () => {
   }
 };
 
-export default Artist;
+export default Album;

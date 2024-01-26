@@ -7,13 +7,27 @@ const initialState = {
   allTimeTopTracks: {},
   monthlyTopTracks: {},
   artistTopTracks: {},
+  recommendedTracks: {},
 };
 
+export const getTrackById = createAsyncThunk("gettrackbyid", async (id) => {
+  const response = await apiClient.get(`tracks/${id}`);
+  return response.data;
+});
+export const getRecommendedTracksById = createAsyncThunk(
+  "getrecommendedtracksbyid",
+  async (id) => {
+    const response = await apiClient.get(
+      `recommendations?market=TR&seed_tracks=${id}&min_popularity=50`
+    );
+    return response.data.tracks;
+  }
+);
 export const getAllTimeTopTracks = createAsyncThunk(
   "getalltimetoptracks",
   async () => {
     const response = await apiClient.get(
-      `recommendations?market=TR&seed_genres=pop&max_popularity=100`
+      `recommendations?market=TR&seed_genres=pop&min_popularity=50`
     );
     return response.data.tracks;
   }
@@ -36,13 +50,15 @@ export const getArtistTopTracks = createAsyncThunk(
   }
 );
 
-
 export const trackSlice = createSlice({
   name: "track",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(getTrackById.fulfilled, (state, action) => {
+        state.track = action.payload;
+      })
       .addCase(getAllTimeTopTracks.fulfilled, (state, action) => {
         state.allTimeTopTracks = action.payload;
       })
@@ -52,7 +68,9 @@ export const trackSlice = createSlice({
       .addCase(getArtistTopTracks.fulfilled, (state, action) => {
         state.artistTopTracks = action.payload;
       })
-      
+      .addCase(getRecommendedTracksById.fulfilled, (state, action) => {
+        state.recommendedTracks = action.payload;
+      });
   },
 });
 

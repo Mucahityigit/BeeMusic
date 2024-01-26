@@ -93,9 +93,9 @@ const Favorite = () => {
         } flex-wrap gap-3`}
       >
         {albums?.map((album, index) => (
-          <Link to={`/artist/${album.id}`} key={index}>
+          <div key={index}>
             <AlbumCard data={album} />
-          </Link>
+          </div>
         ))}
       </div>
       <div
@@ -115,9 +115,9 @@ const Favorite = () => {
         } flex-wrap gap-3`}
       >
         {artists?.map((artist, index) => (
-          <Link to={`/artist/${artist.id}`} key={index}>
+          <div key={index}>
             <MultiPurposeCard data={artist} />
-          </Link>
+          </div>
         ))}
       </div>
     </div>

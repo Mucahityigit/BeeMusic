@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getArtistById, getArtistRelatedArtists } from "../redux/artistSlice";
 import { FaPlay } from "react-icons/fa";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { getArtistTopTracks } from "../redux/trackSlice";
 import SongCard from "../components/SongCard";
 import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
@@ -18,6 +18,14 @@ const Artist = () => {
   const { artistTopTracks } = useSelector((state) => state.track);
   const { artistAlbums } = useSelector((state) => state.album);
   const [isLoading, setIsLoading] = useState(true);
+  const { artists } = useSelector((state) => state.favorite);
+  const [favoriteID, setFavoriteID] = useState();
+
+  useEffect(() => {
+    // Eğer favori şarkılar içerisinde track varsa favoriID'yi set et
+    const isFavorite = artists.some((favArtist) => favArtist.id === artist?.id);
+    setFavoriteID(isFavorite ? artist.id : null);
+  }, [artists, artist]);
 
   const selectActiveSong = (data, track, index, value) => {
     dispatch(setActiveSong({ data, track, index }));
@@ -50,11 +58,18 @@ const Artist = () => {
           <div
             className={`relative w-[600px] h-[630px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]`}
           >
-            <MdFavoriteBorder
-              className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition "
-              onClick={() => handleFavorite(artist)}
-            />
-            {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
+            {favoriteID === artist.id ? (
+              <MdFavorite
+                className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-bgLinearFirst cursor-pointer transition "
+                onClick={() => handleFavorite(artist)}
+              />
+            ) : (
+              <MdFavoriteBorder
+                className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition "
+                onClick={() => handleFavorite(artist)}
+              />
+            )}
+
             <img
               className="w-[100%] h-[100%] rounded-[30px] object-cover object-left-top "
               src={`${artist?.images[0].url}`}

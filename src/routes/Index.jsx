@@ -4,6 +4,7 @@ import MainLayout from "../layout/MainLayout";
 import Artist from "../pages/Artist";
 import Album from "../pages/Album";
 import Favorite from "../pages/Favorite";
+import Song from "../pages/Song";
 
 const rootes = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const rootes = createBrowserRouter([
       {
         path: "/favorite",
         element: <Favorite />,
+      },
+      {
+        path: "/song/:songID",
+        element: <Song />,
       },
     ],
   },

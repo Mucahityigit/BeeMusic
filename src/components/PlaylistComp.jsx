@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoMdClose } from "react-icons/io";
 import { setActiveSong, setIsPlaying } from "../redux/playerSlice";
 import { RiPlayList2Line } from "react-icons/ri";
+import { setFavorite } from "../redux/favoriteSlice";
 const PlaylistComp = () => {
   const dispatch = useDispatch();
   const { playlist } = useSelector((state) => state.playlist);
@@ -14,18 +15,31 @@ const PlaylistComp = () => {
   let tracks = [];
   const [isLoading, setIsLoading] = useState(true);
 
+  const { playlists } = useSelector((state) => state.favorite);
+  const [favoriteID, setFavoriteID] = useState();
+
+  useEffect(() => {
+    // Eğer favori şarkılar içerisinde track varsa favoriID'yi set et
+    const isFavorite = playlists.some(
+      (favPlaylist) => favPlaylist.id === playlist?.id
+    );
+    setFavoriteID(isFavorite ? playlist.id : null);
+  }, [playlists, playlist]);
+
   const selectActiveSong = (data, track, index, value) => {
     dispatch(setActiveSong({ data, track, index }));
     dispatch(setIsPlaying(value));
+  };
+  const handleFavorite = (data) => {
+    dispatch(setFavorite(data));
   };
 
   useEffect(() => {
     if (Object.keys(playlist).length > 0) {
       setIsLoading(false);
-      setIsActive(true)
+      setIsActive(true);
     }
   }, [playlist]);
-  
 
   if (isLoading) {
     return null;
@@ -50,8 +64,17 @@ const PlaylistComp = () => {
           </div>
           <div className="flex gap-7 pt-5 pb-7 mb-3 border-b border-[rgba(255,255,255,.2)]">
             <div className="relative w-[110px] h-[120px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
-              <MdFavoriteBorder className=" absolute top-3 right-3 p-1 text-[30px]  bg-[rgba(255,255,255,.2)] rounded-md backdrop-blur-sm text-activeColor cursor-pointer transition " />
-              {/* <MdFavorite className=" absolute top-5 right-5 cursor-pointer transition text-2xl " /> */}
+              {favoriteID === playlist.id ? (
+                <MdFavorite
+                  className=" absolute top-3 right-3 p-1 text-[30px]  bg-[rgba(255,255,255,.2)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer "
+                  onClick={() => handleFavorite(playlist)}
+                />
+              ) : (
+                <MdFavoriteBorder
+                  className=" absolute top-3 right-3 p-1 text-[30px]  bg-[rgba(255,255,255,.2)] rounded-md backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer "
+                  onClick={() => handleFavorite(playlist)}
+                />
+              )}
               <img
                 className="w-[100%] h-[100%] rounded-[20px]"
                 src={playlist?.images[0].url}

@@ -32,7 +32,7 @@ const FavoriteArtists = () => {
     return <Loading />;
   } else {
     return (
-      <div className="lg:w-[1200px] md:w-[700px] sm:w-[480px]  xs:w-[320px]">
+      <div className="lg:w-[1600px] md:w-[700px] sm:w-[480px]  xs:w-[320px]">
         <div className="flex justify-between items-end py-2 mb-3 border-b border-[rgba(255,255,255,.4)]">
           <div className="text-activeColor text-2xl font-bold">
             Favorite Artists
@@ -67,9 +67,7 @@ const FavoriteArtists = () => {
         >
           {favoriteArtists?.map((artist) => (
             <SwiperSlide key={artist.id}>
-              <Link to={`./artist/${artist.id}`}>
-                <MultiPurposeCard data={artist} />
-              </Link>
+              <MultiPurposeCard data={artist} />
             </SwiperSlide>
           ))}
         </Swiper>

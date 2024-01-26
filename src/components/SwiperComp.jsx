@@ -56,11 +56,7 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
             {(() => {
               switch (card) {
                 case "multi":
-                  return (
-                    <Link to={`/artist/${value.id}`}>
-                      <MultiPurposeCard data={value} />
-                    </Link>
-                  );
+                  return <MultiPurposeCard data={value} />;
                 case "song":
                   return (
                     <RecommendedSongCard
@@ -73,24 +69,11 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
                 case "playlist":
                   return <PlaylistCard data={value} />;
                 case "album":
-                  return (
-                    <Link to={`/album/${value.id}`}>
-                      <AlbumCard data={value} />
-                    </Link>
-                  );
+                  return <AlbumCard data={value} />;
                 default:
                   return null;
               }
             })()}
-            {/* {card == "multi" ? (
-              <Link to={`/artist/${value.id}`}>
-                <MultiPurposeCard data={value} />
-              </Link>
-            ) : (
-              <Link to={`/album/${value.id}`}>
-                <AlbumCard data={value} />
-              </Link>
-            )} */}
           </SwiperSlide>
         ))}
       </Swiper>

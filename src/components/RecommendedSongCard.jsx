@@ -59,7 +59,7 @@ const RecommendedSongCard = ({ data, track, selectActiveSong, index }) => {
         )}
         <div className="flex justify-between px-4 items-center">
           <Link
-            to={`./track/${track?.id}`}
+            to={`/song/${track?.id}`}
             className="text-md text-activeColor font-bold tracking-wider cursor-pointer hover:text-bgLinearFirst"
           >
             {track?.name.substring(0, 30)}
@@ -69,7 +69,7 @@ const RecommendedSongCard = ({ data, track, selectActiveSong, index }) => {
           </div>
         </div>
         <Link
-          to={`./artist/${track?.artists[0].id}`}
+          to={`/artist/${track?.artists[0].id}`}
           className="text-md text-activeColor px-4 pb-3 cursor-pointer hover:text-bgLinearFirst"
         >
           {track?.artists[0].name}

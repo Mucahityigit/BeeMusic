@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsPlaying } from "../redux/playerSlice";
 
-const Player = () => {
+const Player = ({ volume, seekTime, onTimeUpdate, onLoadedData, repeat }) => {
   const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
@@ -28,22 +28,22 @@ const Player = () => {
     console.log(activeSong);
   }, [activeSong, isPlaying]);
 
-  // useEffect(() => {
-  //   ref.current.volume = volume;
-  // }, [volume]);
-  // // updates audio element only on seekTime change (and not on each rerender):
-  // useEffect(() => {
-  //   ref.current.currentTime = seekTime;
-  // }, [seekTime]);
+  useEffect(() => {
+    ref.current.volume = volume;
+  }, [volume]);
+  // updates audio element only on seekTime change (and not on each rerender):
+  useEffect(() => {
+    ref.current.currentTime = seekTime;
+  }, [seekTime]);
 
   return (
     <audio
       src={activeSong ? activeSong.preview_url : undefined}
       ref={ref}
-      // loop={repeat}
+      loop={repeat}
       onEnded={onEnded}
-      // onTimeUpdate={onTimeUpdate}
-      // onLoadedData={onLoadedData}
+      onTimeUpdate={onTimeUpdate}
+      onLoadedData={onLoadedData}
     />
   );
 };

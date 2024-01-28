@@ -24,7 +24,12 @@ const SongInfo = ({ isPlaying, activeSong }) => {
           />
         </div>
         <div className="flex flex-col">
-          <div className="text-sm text-activeColor">{activeSong?.name}</div>
+          <Link
+            to={`/song/${activeSong?.id}`}
+            className="text-sm text-activeColor hover:text-bgLinearFirst cursor-pointer"
+          >
+            {activeSong?.name}
+          </Link>
           <div className="text-sm text-passiveColor">
             {activeSong?.artists.map((artist, index) => (
               <Link

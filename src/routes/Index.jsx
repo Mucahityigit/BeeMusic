@@ -5,6 +5,8 @@ import Artist from "../pages/Artist";
 import Album from "../pages/Album";
 import Favorite from "../pages/Favorite";
 import Song from "../pages/Song";
+import Discover from "../pages/Discover";
+import Category from "../pages/Category";
 
 const rootes = createBrowserRouter([
   {
@@ -14,6 +16,10 @@ const rootes = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/discover",
+        element: <Discover />,
       },
       {
         path: "/artist/:artistID",
@@ -30,6 +36,10 @@ const rootes = createBrowserRouter([
       {
         path: "/song/:songID",
         element: <Song />,
+      },
+      {
+        path: "/category/:genre",
+        element: <Category />,
       },
     ],
   },

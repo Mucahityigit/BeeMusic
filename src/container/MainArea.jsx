@@ -9,13 +9,13 @@ import PlaylistComp from "../components/PlaylistComp";
 
 const MainArea = () => {
   return (
-    <div className="flex flex-1 flex-col px-7 py-10 gap-6 w-[79%] ml-[14%] overflow-hidden">
+    <div className="flex flex-col lg:px-7 px-5 py-10 gap-6 w-[100%] xl:ml-[14%]  lg:ml-[200px] ml-0  overflow-hidden">
       <NewAlbum />
       <FavoriteArtists />
       <FavoritePlayList />
-      <div className="flex gap-11">
+      <div className="flex lg:flex-row flex-col gap-11">
         <TrendAlbum />
-        {/* <RecommendedTrends /> */}
+        <RecommendedTrends />
       </div>
       <PlaylistComp />
     </div>

@@ -29,10 +29,16 @@ const Discover = () => {
   }, [genres]);
 
   const handleQuery = (query) => {
-    dispatch(getTracksByQuery(query));
-    dispatch(getAlbumsByQuery(query));
-    dispatch(getArtistsByQuery(query));
-    dispatch(getPlaylistsByQuery(query));
+    let value;
+    if(query){
+      value = query
+    }else{
+      value = ""
+    }
+    dispatch(getTracksByQuery(value));
+    dispatch(getAlbumsByQuery(value));
+    dispatch(getArtistsByQuery(value));
+    dispatch(getPlaylistsByQuery(value));
   };
 
   const generateRandomColors = () => {
@@ -51,7 +57,7 @@ const Discover = () => {
     return <Loading />;
   } else {
     return (
-      <div className="w-full h-full ml-[14%] p-7 bg-bgImage bg-cover pb-[100px]">
+      <div className="w-full h-full lg:ml-[14%] ml-0 p-7 bg-bgImage bg-cover pb-[100px]">
         <div className="relative flex flex-col w-full justify-center items-center">
           <div className="relative">
             <IoIosSearch className="absolute top-4 left-4 text-[30px] text-[rgba(255,255,255,.4)]" />

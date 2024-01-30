@@ -23,10 +23,10 @@ const MusicPlayer = () => {
         Object.keys(activeSong).length > 0
           ? "transition-all ease-in-out duration-500 flex h-[100px]"
           : "hidden "
-      }  fixed bottom-0 left-0 z-10  justify-between items-center w-full h-[100px] bg-[rgba(8,15,29,.95)] px-7`}
+      }  fixed lg:bottom-0 bottom-[80px] left-0 z-10  justify-between items-center w-full h-[100px] bg-[rgba(8,15,29,.95)] px-7`}
     >
       <SongInfo activeSong={activeSong} isPlaying={isPlaying} />
-      <div className="flex flex-1 flex-col gap-4 items-center">
+      <div className="flex flex-col gap-4 items-center">
         <Controller activeSong={activeSong} isPlaying={isPlaying} />
         <PlaybackBar
           onInput={(event) => setSeekTime(event.target.value)}
@@ -44,7 +44,6 @@ const MusicPlayer = () => {
           onLoadedData={(event) => setDuration(event.target.duration)}
         />
       </div>
-      <div className="flex justify-center items-center flex-1">
         <VolumeBar
           value={volume}
           min="0"
@@ -52,7 +51,6 @@ const MusicPlayer = () => {
           onChange={(event) => setVolume(event.target.value)}
           setVolume={setVolume}
         />
-      </div>
     </div>
   );
 };

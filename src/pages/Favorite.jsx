@@ -19,14 +19,8 @@ const Favorite = () => {
     dispatch(setIsPlaying(value));
   };
 
-  useEffect(() => {
-    console.log(songs);
-    console.log(artists);
-    console.log(albums);
-    console.log(playlists);
-  }, [songs, playlists, artists, albums]);
   return (
-    <div className="w-full min-h-[100vh] p-7 ml-[14%] flex flex-col gap-5 bg-bgImage bg-cover">
+    <div className="w-full min-h-[100vh] p-7 lg:ml-[14%] ml-0 flex flex-col gap-5 bg-bgImage bg-cover">
       <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
         <ul className="flex flex-wrap -mb-px">
           <li
@@ -74,7 +68,7 @@ const Favorite = () => {
       <div
         className={`${
           activeTab === "songs" ? "flex" : "hidden"
-        } flex-wrap gap-3`}
+        } flex-wrap sm:justify-normal justify-center gap-y-4 gap-x-12 `}
       >
         {songs?.map((song, index) => (
           <div key={index}>
@@ -90,7 +84,7 @@ const Favorite = () => {
       <div
         className={`${
           activeTab === "albums" ? "flex" : "hidden"
-        } flex-wrap gap-3`}
+        } flex-wrap sm:justify-normal justify-center gap-y-4 gap-x-12 `}
       >
         {albums?.map((album, index) => (
           <div key={index}>
@@ -101,7 +95,7 @@ const Favorite = () => {
       <div
         className={`${
           activeTab === "playlists" ? "flex" : "hidden"
-        } flex-wrap gap-3`}
+        } flex-wrap sm:justify-normal justify-center gap-y-4 gap-x-12 `}
       >
         {playlists?.map((playlist, index) => (
           <div key={index}>
@@ -112,7 +106,7 @@ const Favorite = () => {
       <div
         className={`${
           activeTab === "artists" ? "flex" : "hidden"
-        } flex-wrap gap-3`}
+        } flex-1 flex-wrap sm:justify-normal justify-center gap-y-4 gap-x-12 `}
       >
         {artists?.map((artist, index) => (
           <div key={index}>

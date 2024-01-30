@@ -53,10 +53,10 @@ const Artist = () => {
     return <Loading />;
   } else {
     return (
-      <div className="w-full h-full ml-[14%] p-7 bg-bgImage bg-cover pb-[100px]">
-        <div className="flex gap-10 pt-5 pb-10">
+      <div className="w-full h-full lg:ml-[14%] p-7 bg-bgImage bg-cover pb-[100px]">
+        <div className="flex gap-10 pt-5 pb-10 lg:flex-row  flex-col justify-center items-center md:w-[] ">
           <div
-            className={`relative w-[600px] h-[630px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]`}
+            className={`relative 2xl:w-[600px] 2xl:h-[665px] xl:w-[500px] xl:h-[550px] lg:w-[400px] lg:h-[550px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]`}
           >
             {favoriteID === artist.id ? (
               <MdFavorite
@@ -76,33 +76,37 @@ const Artist = () => {
               alt=""
             />
           </div>
-          <div className="flex flex-1 flex-col justify-center gap-8">
-            <h1 className="text-[2.5em] text-activeColor font-bold">
+          <div className="flex flex-1 w-full flex-col justify-center 2xl:gap-8 gap-5">
+            <h1 className="2xl:text-[2.5em] xl:text-[2em] lg:text-[1.7em] text-activeColor font-bold">
               {artist?.name}
             </h1>
-            <div className="flex items-center gap-3">
-              {artist?.genres.map((genre, i) => (
-                <div
-                  key={i}
-                  className="py-3 px-4 bg-bgGradient rounded-[20px] text-activeColor"
-                >
-                  {genre}
-                </div>
-              ))}
-              <span className="py-3 px-4 bg-bgGradient rounded-[20px] text-activeColor">
-                <span className="text-bgLinearFirst font-bold">
-                  followers :
-                </span>{" "}
-                {artist?.followers.total}
-              </span>
-              <span className="py-3 px-4 bg-bgGradient rounded-[20px] text-activeColor">
-                <span className="text-bgLinearFirst font-bold">
-                  popularity :
-                </span>{" "}
-                {artist?.popularity} / 100
-              </span>
+            <div className="flex flex-col flex-wrap gap-5 text-sm lg:w-[600px]">
+              <div className="flex gap-3">
+                {artist?.genres.map((genre, i) => (
+                  <div
+                    key={i}
+                    className="2xl:py-3 2xl:px-4 py-2 px-3 bg-bgGradient rounded-[20px] text-activeColor"
+                  >
+                    {genre}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <span className="2xl:py-3 2xl:px-4 py-2 px-3 bg-bgGradient rounded-[20px] text-activeColor">
+                  <span className="text-bgLinearFirst font-bold">
+                    followers :
+                  </span>{" "}
+                  {artist?.followers.total}
+                </span>
+                <span className="2xl:py-3 2xl:px-4 py-2 px-3 bg-bgGradient rounded-[20px] text-activeColor">
+                  <span className="text-bgLinearFirst font-bold">
+                    popularity :
+                  </span>{" "}
+                  {artist?.popularity} / 100
+                </span>
+              </div>
             </div>
-            <div className="flex flex-col w-full h-[455px] p-3 bg-[rgba(255,255,255,.04)] rounded-xl">
+            <div className="flex flex-col 2xl:w-full 2xl:h-[455px] xl:w-[720px] xl:h-[385px] lg:w-[600px] lg:h-[385px] w-full h-[385px]  p-3 bg-[rgba(255,255,255,.04)] rounded-xl">
               <div className=" overflow-auto  custom-scrollbar">
                 {artistTopTracks?.map((track, index) => (
                   <SongCard
@@ -117,7 +121,7 @@ const Artist = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-14">
+        <div className="flex flex-col justify-center items-center gap-14">
           <SwiperComp
             data={artistAlbums}
             title="Artist's Albums"

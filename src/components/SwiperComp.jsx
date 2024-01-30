@@ -20,7 +20,7 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
   };
   console.log(data);
   return (
-    <div className="lg:w-[1600px] sm:w-[640px] xs:w-[320px]">
+    <div className="2xl:w-[1580px] xl:w-[1250px] lg:w-[1020px]  md:w-[900px] sm:w-[680px] w-full ">
       <div className="flex justify-between items-end py-2 mb-3 border-b border-[rgba(255,255,255,.4)]">
         <div className="text-activeColor text-2xl font-bold">{title}</div>
       </div>
@@ -28,19 +28,27 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
         breakpoints={{
           320: {
             slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          480: {
-            slidesPerView: 2,
-            spaceBetween: 30,
+            spaceBetween: 10,
           },
           640: {
-            slidesPerView: 3,
+            slidesPerView: slidesPerView-4,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: slidesPerView-3,
             spaceBetween: 30,
           },
-          1600: {
+          1024: {
+            slidesPerView: slidesPerView-2,
+            spaceBetween: 10,
+          },
+          1280: {
+            slidesPerView: slidesPerView-1,
+            spaceBetween: 20,
+          },
+          1540: {
             slidesPerView: slidesPerView,
-            spaceBetween: 30,
+            spaceBetween: 40,
           },
         }}
         spaceBetween={30}
@@ -52,7 +60,7 @@ const SwiperComp = ({ data, title, card, slidesPerView }) => {
         modules={[Autoplay]}
       >
         {data?.map((value, index) => (
-          <SwiperSlide key={value.id}>
+          <SwiperSlide key={value.id} className="flex justify-center items-center">
             {(() => {
               switch (card) {
                 case "multi":

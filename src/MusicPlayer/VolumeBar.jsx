@@ -9,21 +9,21 @@ const VolumeBar = ({ value, min, max, onChange, setVolume }) => (
   <div className="hidden lg:flex flex-1 items-center justify-end ">
     {value <= 1 && value > 0.5 && (
       <BsFillVolumeUpFill
-        className="text-bgLinearSecond"
+        className="text-activeColor"
         size={25}
         onClick={() => setVolume(0)}
       />
     )}
     {value <= 0.5 && value > 0 && (
       <BsVolumeDownFill
-        className="text-bgLinearSecond"
+        className="text-activeColor"
         size={25}
         onClick={() => setVolume(0)}
       />
     )}
     {value === 0 && (
       <BsFillVolumeMuteFill
-        className="text-bgLinearSecond"
+        className="text-activeColor"
         size={25}
         onClick={() => setVolume(1)}
       />

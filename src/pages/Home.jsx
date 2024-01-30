@@ -23,7 +23,7 @@ const Home = () => {
     return <Loading />;
   } else {
     return (
-      <div className="flex flex-1 bg-bgImage bg-cover pb-16">
+      <div className="flex w-full bg-bgImage bg-cover pb-16">
         <MainArea />
         {/* <LastListened /> */}
       </div>

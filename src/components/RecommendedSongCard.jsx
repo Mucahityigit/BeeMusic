@@ -26,7 +26,7 @@ const RecommendedSongCard = ({ data, track, selectActiveSong, index }) => {
     setFavoriteID(isFavorite ? track.id : null);
   }, [songs, track]);
   return (
-    <div className="relative w-[225px] h-[300px] rounded-[30px] overflow-hidden">
+    <div className="relative sm:w-[225px] w-full h-[300px] rounded-[30px] overflow-hidden">
       {track.id === favoriteID ? (
         <MdFavorite
           className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer z-10"

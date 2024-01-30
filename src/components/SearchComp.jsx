@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Loading from "./Loading";
 
 const SearchComp = () => {
   const { artistResults, albumResults, trackResults, playlistResults } =
     useSelector((state) => state.search);
+    const [isLoading, setIsLoading] = useState(true)
 
-  console.log(artistResults);
-  console.log(albumResults);
-  console.log(trackResults);
-  console.log(playlistResults);
+  useEffect(()=>{
+    if(Object.keys(artistResults).length > 0 ||Object.keys(albumResults).length > 0 ||Object.keys(trackResults).length > 0 ||Object.keys(playlistResults).length > 0 ){
+      setIsLoading(false)
+    }
+    console.log(playlistResults)
+  },[playlistResults,artistResults,albumResults,trackResults])
+
+
+  if(isLoading){
+    <Loading/>
+  }else{
   return (
     <div className="w-full px-5 ">
-      <div className="flex flex-col gap-3">
+      {Object.keys(artistResults).length > 0 && (
+
+<div className="flex flex-col gap-3">
         <div className="text-xl text-activeColor border-b-[1px]  pb-1 border-[rgba(255,255,255,.2)]">
           Artists
         </div>
@@ -33,7 +44,9 @@ const SearchComp = () => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      )}
+      {Object.keys(trackResults).length > 0 && (
+        <div className="flex flex-col gap-3">
         <div className="text-xl text-activeColor border-b-[1px]  pb-1 border-[rgba(255,255,255,.2)]">
           Tracks
         </div>
@@ -55,7 +68,9 @@ const SearchComp = () => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      )}
+      {Object.keys(albumResults).length > 0 && (
+        <div className="flex flex-col gap-3">
         <div className="text-xl text-activeColor border-b-[1px]  pb-1 border-[rgba(255,255,255,.2)]">
           Albums
         </div>
@@ -77,7 +92,9 @@ const SearchComp = () => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      )}
+            {Object.keys(albumResults).length > 0 && (
+              <div className="flex flex-col gap-3">
         <div className="text-xl text-activeColor border-b-[1px]  pb-1 border-[rgba(255,255,255,.2)]">
           Playlists
         </div>
@@ -89,7 +106,7 @@ const SearchComp = () => {
             >
               <div className="w-[60px] h-[60px] rounded-lg ">
                 <img
-                  src={playlist.images[2].url}
+                  src={playlist.images[0].url}
                   className="w-[100%] h-[100%] rounded-lg "
                   alt=""
                 />
@@ -99,8 +116,12 @@ const SearchComp = () => {
           ))}
         </div>
       </div>
+            )}
+
+      
     </div>
   );
+          }
 };
 
 export default SearchComp;

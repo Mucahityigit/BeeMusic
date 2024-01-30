@@ -32,46 +32,54 @@ const FavoriteArtists = () => {
     return <Loading />;
   } else {
     return (
-      <div className="lg:w-[1600px] md:w-[700px] sm:w-[480px]  xs:w-[320px]">
-        <div className="flex justify-between items-end py-2 mb-3 border-b border-[rgba(255,255,255,.4)]">
-          <div className="text-activeColor text-2xl font-bold">
-            Favorite Artists
-          </div>
-        </div>
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            480: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            1200: {
-              slidesPerView: 6,
-              spaceBetween: 50,
-            },
-            1600: {
-              slidesPerView: 8,
-              spaceBetween: 30,
-            },
-          }}
-          spaceBetween={30}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          modules={[Autoplay]}
-        >
-          {favoriteArtists?.map((artist) => (
-            <SwiperSlide key={artist.id}>
-              <MultiPurposeCard data={artist} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <div className="2xl:w-[1580px] xl:w-[1250px] lg:w-[1000px]  md:w-[830px] sm:w-[680px] w-full ">
+  <div className="flex justify-between items-end py-2 mb-3 border-b border-[rgba(255,255,255,.4)]">
+    <div className="text-activeColor lg:text-2xl text-xl font-bold">
+      Favorite Artists
+    </div>
+  </div>
+  <Swiper
+    breakpoints={{
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 5,
+        spaceBetween: 40,
+      },
+      1280: {
+        slidesPerView: 6,
+        spaceBetween: 50,
+      },
+      1540: {
+        slidesPerView: 8,
+        spaceBetween: 40,
+      },
+    }}
+    spaceBetween={30}
+    autoplay={{
+      delay: 2500,
+      disableOnInteraction: false,
+    }}
+    loop={true}
+    modules={[Autoplay]}
+  >
+    {favoriteArtists?.map((artist) => (
+      <SwiperSlide key={artist.id} className="flex justify-center items-center">
+        <MultiPurposeCard data={artist} />
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
     );
   }
 };

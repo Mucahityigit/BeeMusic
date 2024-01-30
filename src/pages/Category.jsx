@@ -30,12 +30,12 @@ const Category = () => {
     return <Loading />;
   } else {
     return (
-      <div className="w-full min-h-[100vh] ml-[14%] p-7 bg-bgImage bg-cover pb-[100px]">
+      <div className="w-full min-h-[100vh] lg:ml-[14%] ml-0 p-7 bg-bgImage bg-cover pb-[100px]">
         <div className="text-xl text-activeColor py-2 mb-5 border-b-2 border-[rgba(255,255,255,.4)]">
           Songs in <span className="text-bgLinearFirst font-bold">{genre}</span>{" "}
           category
         </div>
-        <div className="flex flex-wrap  gap-8  justify-between">
+        <div className="flex flex-wrap  gap-8  sm:justify-between justify-center">
           {Object.keys(categoryTracks).length > 0 ? (
             categoryTracks?.map((track, index) => (
               <div key={track.id}>

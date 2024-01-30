@@ -21,7 +21,7 @@ const AlbumCard = ({ data }) => {
   }, [albums]);
 
   return (
-    <div className="relative w-[225px] h-[195px] m-[5px] group">
+    <div className="relative sm:w-[225px] w-full sm:h-[195px] h-[300px]  m-[5px] group">
       {data.id === favoriteID ? (
         <MdFavorite
           className=" absolute top-5 right-5 p-1 text-[32px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer transition z-10"
@@ -35,8 +35,8 @@ const AlbumCard = ({ data }) => {
       )}
 
       <Link to={`/album/${data.id}`}>
-        <div className="transition flex flex-col justify-center items-start px-[10px] gap-2 w-[225px] h-[195px] rounded-xl bg-bgCard cursor-pointer hover:bg-[#28334A]">
-          <div className="relative w-[205px] h-[115px]">
+        <div className="transition flex flex-col justify-center items-start px-[10px] gap-2 sm:w-[225px] w-full sm:h-[195px] h-[300px] rounded-xl bg-bgCard cursor-pointer hover:bg-[#28334A]">
+          <div className="relative sm:w-[205px] sm:h-[115px] w-[100%] h-[72%]">
             <img
               className="w-[100%] h-[100%] object-cover object-top rounded-xl"
               src={data?.images[0].url}

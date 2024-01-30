@@ -18,7 +18,7 @@ const MultiPurposeCard = ({ data }) => {
   }, [artists]);
 
   return (
-    <div className="relative w-[150px] h-[200px]  m-[5px] group">
+    <div className="relative sm:w-[150px] sm:h-[200px] w-full h-[300px]  m-[5px] group">
       {favoriteID === data.id ? (
         <MdFavorite
           className=" absolute top-5 right-6 p-1 text-[30px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer transition z-10"
@@ -33,12 +33,12 @@ const MultiPurposeCard = ({ data }) => {
 
       <Link
         to={`/artist/${data.id}`}
-        className="transition-all ease-in-out duration-300 flex flex-col justify-between py-3 items-center gap-2 rounded-xl bg-bgCard cursor-pointer group hover:bg-[#28334A]"
+        className="transition-all ease-in-out duration-300 flex flex-col justify-between  py-3 items-center gap-2 rounded-xl bg-bgCard cursor-pointer group hover:bg-[#28334A]"
       >
-        <div className="relative w-[120px] h-[140px]">
+        <div className="relative sm:w-[120px] sm:h-[140px] w-[90%] h-[250px]">
           <img
             className="w-[100%] h-[100%] rounded-xl"
-            src={data?.images[2].url}
+            src={data?.images[0].url}
             alt=""
           />
         </div>

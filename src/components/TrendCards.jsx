@@ -19,26 +19,34 @@ const TrendCards = ({ data, title }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex py-2  border-b border-[rgba(255,255,255,.4)]">
-        <div className="text-activeColor text-3xl font-bold">{title}</div>
+        <div className="text-activeColor lg:text-3xl text-lg font-bold">{title}</div>
       </div>
-      <div className="flex lg:w-[1100px]">
+      <div className="2xl:w-[1100px] xl:w-[750px] lg:w-[500px] md:w-[768px] sm:w-[680px] xs:w-[420px] ">
         <Swiper
           breakpoints={{
             320: {
               slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 2,
               spaceBetween: 20,
             },
-            480: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            1100: {
+            768: {
               slidesPerView: 3,
               spaceBetween: 30,
             },
-            1600: {
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1280: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1540: {
               slidesPerView: 4,
-              spaceBetween: 50,
+              spaceBetween: 20,
             },
           }}
           spaceBetween={30}
@@ -50,7 +58,7 @@ const TrendCards = ({ data, title }) => {
           modules={[Autoplay]}
         >
           {data?.map((track, index) => (
-            <SwiperSlide key={track.id}>
+            <SwiperSlide key={track.id} className="flex justify-center items-center">
               <RecommendedSongCard
                 data={data}
                 track={track}

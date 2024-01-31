@@ -13,7 +13,11 @@ export default {
         bgCard: "#0F2234",
       },
       backgroundImage: {
-        bgImage: "url('./src/assets/background1.png')",
+        bgComp:
+          "linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%)",
+
+        bgImage:
+          "linear-gradient(to right bottom, #131923, #161926, #1c1829, #221629, #2a1428, #32142a, #3a132a, #42122a, #4e122e, #5b1232, #671235, #741137)",
         bgGradient:
           "linear-gradient(130deg, rgba(255,255,255,0.4),rgba(255,255,255,0.3),rgba(255,255,255,0.2),rgba(255,255,255,0.1) ,rgba(255,255,255,0.01))",
         bgSideLeftGradient:

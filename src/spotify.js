@@ -2,7 +2,7 @@ import axios from "axios";
 
 const authEndpoint = "https://accounts.spotify.com/authorize?";
 const clientID = "10c60b20f6614a7d85b2b3b19fcee73d";
-const redirectUri = "http://localhost:5173/";
+const redirectUri = "https://bee-music-xi.vercel.app/";
 const scopes = [
   "user-library-read",
   "playlist-read-private",
@@ -12,7 +12,7 @@ const scopes = [
   "user-read-playback-position",
   "user-read-recently-played",
   "user-read-private",
-  "user-top-read"
+  "user-top-read",
 ];
 
 export const loginEndpoint = `${authEndpoint}client_id=${clientID}&redirect_uri=${redirectUri}&scope=${scopes.join(

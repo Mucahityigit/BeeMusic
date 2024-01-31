@@ -22,7 +22,7 @@ const Favorite = () => {
   return (
     <div className="w-full min-h-[100vh] p-7 lg:ml-[14%] ml-0 flex flex-col gap-5 bg-bgImage bg-cover">
       <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200">
-        <ul className="flex flex-wrap justify-between -mb-px sm:text-md text-xs ">
+        <ul className="flex flex-wrap sm:justify-start justify-between -mb-px sm:text-md text-xs ">
           <li
             className={`${
               activeTab === "songs"

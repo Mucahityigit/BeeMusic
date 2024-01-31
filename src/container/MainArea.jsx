@@ -17,7 +17,6 @@ const MainArea = () => {
         <TrendAlbum />
         <RecommendedTrends />
       </div>
-      <PlaylistComp />
     </div>
   );
 };

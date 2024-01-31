@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MainArea from "../container/MainArea";
-import LastListened from "../container/LastListened";
 import { useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 
@@ -25,7 +24,6 @@ const Home = () => {
     return (
       <div className="flex w-full bg-bgImage bg-cover pb-16">
         <MainArea />
-        {/* <LastListened /> */}
       </div>
     );
   }

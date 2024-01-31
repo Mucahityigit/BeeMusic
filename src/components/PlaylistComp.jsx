@@ -47,7 +47,7 @@ const PlaylistComp = () => {
     if (!isActive) {
       return (
         <div
-          className="transition-all ease-in-out duration-300 fixed right-1 top-[44%] flex justify-center items-center w-[50px] h-[50px] bg-bgColor rounded-lg cursor-pointer group hover:bg-[#28334A] z-40"
+          className="transition-all ease-in-out duration-300 fixed right-1 sm:top-[44%] top-12 flex justify-center items-center w-[50px] h-[50px] bg-bgColor rounded-lg cursor-pointer group hover:bg-[#28334A] z-40"
           onClick={() => setIsActive(true)}
         >
           <RiPlayList2Line className="text-2xl text-activeColor group-hover:text-bgLinearFirst" />
@@ -55,7 +55,7 @@ const PlaylistComp = () => {
       );
     } else {
       return (
-        <div className="transition-all ease-in-out duration-300 fixed top-[20%] right-1 flex flex-col w-[400px] bg-bgColor pt-3 pb-7 pl-5 pr-4 rounded-[30px] z-40">
+        <div className="transition-all ease-in-out duration-300 fixed sm:top-[20%] top-[50px] right-1 flex flex-col sm:w-[400px] w-[90%]  bg-bgColor pt-3 pb-7 pl-5 pr-4 rounded-[30px] z-40">
           <div
             className=" transition-all ease-in-out duration-300 absolute right-3 top-3 p-1 rounded-full hover:bg-[#28334A] cursor-pointer "
             onClick={() => setIsActive(false)}

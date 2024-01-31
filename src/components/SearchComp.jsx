@@ -32,9 +32,9 @@ const SearchComp = () => {
               {artistResults?.map((artist) => (
                 <div
                   key={artist.id}
-                  className="flex flex-1 items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-md text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
+                  className="flex flex-1  items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
-                  <div className="w-[60px] h-[60px] rounded-lg ">
+                  <div className="sm:w-[60px] sm:h-[60px] w-12 h-12 rounded-lg ">
                     <img
                       src={artist.images[2].url}
                       className="w-[100%] h-[100%] rounded-lg "
@@ -56,9 +56,9 @@ const SearchComp = () => {
               {trackResults?.map((track) => (
                 <div
                   key={track.id}
-                  className="flex flex-1 items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-md text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
+                  className="flex flex-1  items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
-                  <div className="w-[60px] h-[60px] rounded-lg ">
+                  <div className="sm:w-[60px] sm:h-[60px] w-12 h-12 rounded-lg ">
                     <img
                       src={track.album.images[2].url}
                       className="w-[100%] h-[100%] rounded-lg "
@@ -80,9 +80,9 @@ const SearchComp = () => {
               {albumResults?.map((album) => (
                 <div
                   key={album.id}
-                  className="flex flex-1 items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-md text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
+                  className="flex flex-1  items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
-                  <div className="w-[60px] h-[60px] rounded-lg ">
+                  <div className="sm:w-[60px] sm:h-[60px] w-12 h-12 rounded-lg ">
                     <img
                       src={album.images[2].url}
                       className="w-[100%] h-[100%] rounded-lg "
@@ -104,9 +104,9 @@ const SearchComp = () => {
               {playlistResults?.map((playlist) => (
                 <div
                   key={playlist.id}
-                  className="flex flex-1 items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-md text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
+                  className="flex flex-1 items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
-                  <div className="w-[60px] h-[60px] rounded-lg ">
+                  <div className="sm:w-[60px] sm:h-[60px] w-12 h-12 rounded-lg ">
                     <img
                       src={playlist.images[0].url}
                       className="w-[100%] h-[100%] rounded-lg "

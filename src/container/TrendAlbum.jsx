@@ -118,7 +118,7 @@ const TrendAlbum = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col max-h-[432px] overflow-y-scroll  custom-scrollbar">
+        <div className="flex flex-col sm:max-h-[432px] h-[380px] overflow-y-scroll  custom-scrollbar">
           {listenedAlbum?.tracks.items.map((track, index) => (
             <SongCard
               key={track.id}

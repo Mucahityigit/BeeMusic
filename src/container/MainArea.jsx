@@ -15,7 +15,7 @@ const MainArea = () => {
       <FavoritePlayList />
       <div className="flex lg:flex-row flex-col gap-11">
         <TrendAlbum />
-        <RecommendedTrends />
+        {/* <RecommendedTrends /> */}
       </div>
       <PlaylistComp />
     </div>

@@ -48,7 +48,6 @@ const Artist = () => {
     }
   }, [artistTopTracks]);
 
-  console.log(artistRelatedArtists);
   if (isLoading) {
     return <Loading />;
   } else {

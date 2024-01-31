@@ -49,7 +49,6 @@ const TrendAlbum = () => {
       setIsLoading(false);
     }
   }, [listenedAlbum]);
-  console.log(listenedAlbum);
 
   if (isLoading) {
     return <Loading />;

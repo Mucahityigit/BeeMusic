@@ -44,7 +44,6 @@ const Album = () => {
     if (Object.keys(listenedAlbum).length > 0) {
       setIsLoading(false);
     }
-    console.log(listenedAlbum);
   }, [listenedAlbum]);
 
   if (isLoading) {
@@ -53,7 +52,7 @@ const Album = () => {
     return (
       <div className="w-full h-full lg:ml-[14%] p-7 bg-bgImage bg-cover pb-[100px]">
         <div className="flex gap-10 pt-5 pb-10 lg:flex-row  flex-col justify-center items-center md:w-[] ">
-        <div
+          <div
             className={`relative 2xl:w-[600px] 2xl:h-[665px] xl:w-[500px] xl:h-[550px] lg:w-[400px] lg:h-[550px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]`}
           >
             {favoriteID === listenedAlbum.id ? (
@@ -76,7 +75,7 @@ const Album = () => {
           </div>
           <div className="flex flex-1 w-full flex-col justify-center 2xl:gap-8 gap-5">
             <div className="flex flex-col">
-            <h1 className="2xl:text-[2.5em] xl:text-[2em] lg:text-[1.7em] text-activeColor font-bold">
+              <h1 className="2xl:text-[2.5em] xl:text-[2em] lg:text-[1.7em] text-activeColor font-bold">
                 {listenedAlbum?.name}
               </h1>
               <Link
@@ -92,11 +91,11 @@ const Album = () => {
                 <div
                   key={i}
                   className="2xl:py-3 2xl:px-4 py-2 px-3 bg-bgGradient rounded-[20px] text-activeColor"
-                  >
+                >
                   {genre}
                 </div>
               ))}
-                <span className="2xl:py-3 2xl:px-4 py-2 px-3 bg-bgGradient rounded-[20px] text-activeColor">
+              <span className="2xl:py-3 2xl:px-4 py-2 px-3 bg-bgGradient rounded-[20px] text-activeColor">
                 <span className="text-bgLinearFirst font-bold">
                   release date :
                 </span>{" "}

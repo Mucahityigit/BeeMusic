@@ -52,12 +52,7 @@ export const searchSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getTracksByQuery.fulfilled, (state, action) => {
-        if(action.payload === ""){
-          state.trackResults = {}
-          
-        }else{
-          state.trackResults = action.payload;
-        }
+        state.trackResults = action.payload;
       })
       .addCase(getAlbumsByQuery.fulfilled, (state, action) => {
         state.albumResults = action.payload;

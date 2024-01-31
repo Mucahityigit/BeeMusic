@@ -23,7 +23,6 @@ const Category = () => {
     if (Object.keys(categoryTracks).length > 0) {
       setIsLoading(false);
     }
-    console.log(categoryTracks);
   }, [categoryTracks]);
 
   if (isLoading) {

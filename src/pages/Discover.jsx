@@ -16,6 +16,7 @@ const Discover = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [colors, setColors] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
     dispatch(getGenres());
@@ -29,16 +30,15 @@ const Discover = () => {
   }, [genres]);
 
   const handleQuery = (query) => {
-    let value;
-    if(query){
-      value = query
-    }else{
-      value = ""
+    if (query) {
+      setIsEmpty(false);
+    } else {
+      setIsEmpty(true);
     }
-    dispatch(getTracksByQuery(value));
-    dispatch(getAlbumsByQuery(value));
-    dispatch(getArtistsByQuery(value));
-    dispatch(getPlaylistsByQuery(value));
+    dispatch(getTracksByQuery(query));
+    dispatch(getAlbumsByQuery(query));
+    dispatch(getArtistsByQuery(query));
+    dispatch(getPlaylistsByQuery(query));
   };
 
   const generateRandomColors = () => {
@@ -68,7 +68,11 @@ const Discover = () => {
               onKeyUp={(e) => handleQuery(e.target.value)}
             />
           </div>
-          <div className="w-auto bg-[rgba(255,255,255,.1)] mt-[10px] pt-[15px] rounded-3xl">
+          <div
+            className={` ${
+              isEmpty ? "hidden" : "flex"
+            } absolute top-14 w-auto bg-[rgb(16,28,53)] mt-[10px] pt-[15px] rounded-3xl z-40`}
+          >
             <SearchComp />
           </div>
         </div>

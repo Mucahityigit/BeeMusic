@@ -28,8 +28,6 @@ const SongCard = ({ data, track, selectActiveSong, index }) => {
     dispatch(setFavorite(data));
   };
 
-  console.log(track);
-
   return (
     <div
       className={` ${

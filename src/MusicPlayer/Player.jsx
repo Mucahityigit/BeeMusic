@@ -24,8 +24,6 @@ const Player = ({ volume, seekTime, onTimeUpdate, onLoadedData, repeat }) => {
         }
       }
     }
-
-    console.log(activeSong);
   }, [activeSong, isPlaying]);
 
   useEffect(() => {

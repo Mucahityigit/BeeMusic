@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <div className="flex flex-col gap-5 justify-center items-center w-full h-[100vh] bg-bgColor">
       <img className="w-[200px] h-[200px]" src={logo} alt="" />
-      <div className="text-xl font-bold text-activeColor">
+      <div className="sm:text-xl text-sm  text-center font-bold text-activeColor">
         Please log in to the application by pressing the login button to use the
         API.
       </div>

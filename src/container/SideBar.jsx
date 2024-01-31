@@ -38,33 +38,24 @@ const SideBar = () => {
               Discover
             </span>
           </Link>
-          <Link
-            to="./radio"
-            className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]"
-          >
+          <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
             <FaRadio className="transition text-2xl group-hover:text-bgLinearFirst" />
             <span className="transition group-hover:text-bgLinearFirst">
               Radio
             </span>
-          </Link>
-          <Link
-            to="./albums"
-            className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]"
-          >
+          </div>
+          <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
             <MdLibraryMusic className="transition text-2xl group-hover:text-bgLinearFirst" />
             <span className="transition group-hover:text-bgLinearFirst">
               Albums
             </span>
-          </Link>
-          <Link
-            to="./podcast"
-            className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]"
-          >
+          </div>
+          <div className="transition flex gap-3 text-passiveColor items-center cursor-pointer  group border-2 border-transparent hover:border-bgLinearFirst py-3 px-5 rounded-[30px]">
             <FaPodcast className="transition text-2xl group-hover:text-bgLinearFirst" />
             <span className="transition group-hover:text-bgLinearFirst">
               Podcast
             </span>
-          </Link>
+          </div>
         </div>
         <div className="flex flex-col  gap-3">
           <h4 className="text-sm uppercase px-5 mt-12 text-passiveColor">

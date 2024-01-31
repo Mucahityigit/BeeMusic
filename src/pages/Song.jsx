@@ -72,9 +72,9 @@ const Song = () => {
     return <Loading />;
   } else {
     return (
-      <div className="w-full h-full ml-[14%] p-7 bg-bgImage bg-cover pb-[100px] ">
-        <div className="flex gap-10 pt-5 pb-10">
-          <div className="relative w-[30%] h-[350px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
+      <div className="w-full h-full lg:ml-[14%] p-7 bg-bgImage bg-cover pb-[100px]">
+        <div className="flex lg:flex-row flex-col gap-10 pt-5 pb-10">
+          <div className="relative lg:w-[30%] sm:w-[80%] sx:[100%] h-[350px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
             {track.id === favoriteID ? (
               <MdFavorite
                 className=" absolute top-5 right-5 p-1 text-[40px]  bg-[rgba(16,28,53,0.53)] rounded-lg backdrop-blur-sm text-bgLinearFirst cursor-pointer transition "
@@ -96,48 +96,48 @@ const Song = () => {
           <div className="flex flex-col justify-end gap-7">
             {isPlaying ? (
               <FaPause
-                className="transition-all ease-in-out duration-300 text-activeColor text-[36px]  hover:text-bgLinearFirst hover:border-bgLinearFirst w-[60px] h-[60px] p-[14px] border rounded-2xl cursor-pointer"
+                className="transition-all ease-in-out duration-300 text-activeColor lg:text-[36px] sm:text-[30px]  hover:text-bgLinearFirst hover:border-bgLinearFirst w-[60px] h-[60px] p-[14px] border rounded-2xl cursor-pointer"
                 onClick={() => dispatch(setIsPlaying(false))}
               />
             ) : (
               <FaPlay
-                className="transition-all ease-in-out duration-300 text-activeColor text-[36px]  hover:text-bgLinearFirst hover:border-bgLinearFirst w-[60px] h-[60px] p-[14px] border rounded-2xl cursor-pointer"
+                className="transition-all ease-in-out duration-300 text-activeColor hover:text-bgLinearFirst hover:border-bgLinearFirst lg:w-[60px] lg:h-[60px] w-[50px] h-[50px] p-[14px] border rounded-2xl cursor-pointer"
                 onClick={() => selectActiveSong(track, track, 0, true)}
               />
             )}
-            <h1 className="transition-all ease-in-out duration-300 text-[2.5em] text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer">
+            <h1 className="transition-all ease-in-out duration-300 lg:text-[2.5em] sm:text-[2em] text-[1.5em] text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer">
               {track?.name}
             </h1>
-            <div className="flex items-center gap-3">
+            <div className="flex md:flex-row flex-col  md:items-center items-start gap-3">
               <div className="flex justify-center items-center gap-4 py-3 px-4 bg-bgGradient rounded-[20px]">
                 <div className="flex flex-col">
-                  <div className="text-md text-passiveColor font-bold">
+                  <div className="sm:text-md text-sm text-passiveColor font-bold">
                     Artist
                   </div>
                   <Link
                     to={`/artist/${track?.artists[0].id}`}
-                    className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer"
+                    className="transition-all ease-in-out duration-300 sm:text-xl text-md text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer"
                   >
                     {track?.artists[0].name}
                   </Link>
                 </div>
               </div>
               <div className="flex flex-col justify-center py-3 px-4 bg-bgGradient rounded-[20px]">
-                <div className="text-md text-passiveColor font-bold">
+                <div className="sm:text-md text-sm text-passiveColor font-bold">
                   Album Name:
                 </div>
                 <Link
                   to={`/album/${track?.album.id}`}
-                  className="transition-all ease-in-out duration-300 text-xl text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer"
+                  className="transition-all ease-in-out duration-300 sm:text-xl text-md text-activeColor font-bold hover:text-bgLinearFirst cursor-pointer"
                 >
                   {track?.album.name}
                 </Link>
               </div>
               <div className="flex flex-col justify-center py-3 px-4 bg-bgGradient rounded-[20px]">
-                <div className="text-md text-passiveColor font-bold">
+                <div className="sm:text-md text-sm text-passiveColor font-bold">
                   Album Info
                 </div>
-                <div className="transiton text-xl text-activeColor font-bold">
+                <div className="transiton sm:text-xl text-sm text-activeColor font-bold">
                   {track?.album.total_tracks} Tracks |{" "}
                   {track?.album.release_date.split("-")[0]}
                 </div>

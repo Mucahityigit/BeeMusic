@@ -115,18 +115,12 @@ const SideBar = () => {
           >
             <MdFavorite className="transition text-2xl group-hover:text-bgLinearFirst" />
           </Link>
-          <Link
-            to="./albums"
-            className="transition-all ease-in-out duration-300 text-passiveColor items-center cursor-pointer  group hover:bg-[rgba(255,255,255,.1)] hover:rounded-md py-3 px-5 rounded-[30px]"
-          >
+          <div className="transition-all ease-in-out duration-300 text-passiveColor items-center cursor-pointer  group hover:bg-[rgba(255,255,255,.1)] hover:rounded-md py-3 px-5 rounded-[30px]">
             <MdLibraryMusic className="transition text-2xl group-hover:text-bgLinearFirst" />
-          </Link>
-          <Link
-            to="./podcast"
-            className="transition-all ease-in-out duration-300 text-passiveColor items-center cursor-pointer  group hover:bg-[rgba(255,255,255,.1)] hover:rounded-md py-3 px-5 rounded-[30px]"
-          >
+          </div>
+          <div className="transition-all ease-in-out duration-300 text-passiveColor items-center cursor-pointer  group hover:bg-[rgba(255,255,255,.1)] hover:rounded-md py-3 px-5 rounded-[30px]">
             <FaPodcast className="transition text-2xl group-hover:text-bgLinearFirst" />
-          </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -51,8 +51,10 @@ export const getAllTimeTopTracks = createAsyncThunk(
 export const getMonthlyTopTracks = createAsyncThunk(
   "getmonthlytoptracks",
   async () => {
-    const response = await apiClient.get(`me/top/tracks?time_range=short_term`);
-    return response.data.items;
+    const response = await apiClient.get(
+      `recommendations?market=TR&seed_genres=turkish&min_popularity=50`
+    );
+    return response.data.tracks;
   }
 );
 

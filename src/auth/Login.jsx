@@ -14,6 +14,7 @@ const Login = () => {
     // if (!token && hash) {
     const _token = hash.split("&")[0].split("=")[1];
     // window.localStorage.setItem("token", _token);
+    console.log(_token);
     setCurrentlyToken(_token);
     setClientToken(_token);
     dispatch(setToken(_token));

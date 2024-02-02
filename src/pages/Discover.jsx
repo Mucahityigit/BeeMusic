@@ -60,7 +60,7 @@ const Discover = () => {
       <div className="w-full h-full lg:ml-[14%] ml-0 p-7 bg-bgImage bg-cover pb-[100px]">
         <div className="relative flex flex-col w-full justify-center items-center">
           <div className="relative">
-            <IoIosSearch className="absolute sm:top-4 top-3 left-4 text-[30px] text-[rgba(255,255,255,.4)]" />
+            <IoIosSearch className="absolute top-3 left-4 text-[30px] text-[rgba(255,255,255,.4)]" />
             <input
               className="max-w-[450px] py-4 pl-14 pr-3 sm:text-md  text-xs bg-transparent border-2 border-[rgba(255,255,255,.4)] rounded-3xl text-[rgba(255,255,255,.6)] outline-none"
               type="text"
@@ -71,7 +71,7 @@ const Discover = () => {
           <div
             className={` ${
               isEmpty ? "hidden" : "flex"
-            } absolute sm:top-14 top-12 w-full bg-[rgb(16,28,53)] mt-[10px] pt-[15px] rounded-3xl z-40`}
+            } absolute sm:top-14 top-12 w-full bg-[rgb(16,28,53)] mt-[10px] pt-[15px] py-5 rounded-3xl z-40`}
           >
             <SearchComp />
           </div>

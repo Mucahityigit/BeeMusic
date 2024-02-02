@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authEndpoint = "https://accounts.spotify.com/authorize?";
-const clientID = "10c60b20f6614a7d85b2b3b19fcee73d";
+const clientID = "95b8e571b74b4ea4bcdd31a5bc6b0803";
 const redirectUri = "https://bee-music-xi.vercel.app/";
 
 const scopes = [

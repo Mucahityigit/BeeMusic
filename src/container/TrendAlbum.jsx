@@ -59,12 +59,12 @@ const TrendAlbum = () => {
           <div className="relative w-[200px] h-[220px] rounded-[30px] shadow-[10px_35px_60px_-15px_rgba(0,0,0,0.3)]">
             {listenedAlbum.id === favoriteID ? (
               <MdFavorite
-                className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer transition z-50"
+                className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-bgLinearFirst cursor-pointer transition z-20"
                 onClick={() => handleFavorite(listenedAlbum)}
               />
             ) : (
               <MdFavoriteBorder
-                className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition z-50"
+                className=" absolute top-4 right-4 p-1 text-[36px]  bg-[rgba(16,28,53,0.53)] rounded-md backdrop-blur-sm text-activeColor hover:text-bgLinearFirst cursor-pointer transition z-20"
                 onClick={() => handleFavorite(listenedAlbum)}
               />
             )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const SearchComp = () => {
   const { artistResults, albumResults, trackResults, playlistResults } =
@@ -30,7 +31,8 @@ const SearchComp = () => {
             </div>
             <div className="flex justify-between">
               {artistResults?.map((artist) => (
-                <div
+                <Link
+                  to={`/artist/${artist.id}`}
                   key={artist.id}
                   className="flex flex-1  items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
@@ -42,7 +44,7 @@ const SearchComp = () => {
                     />
                   </div>
                   <div>{artist.name}</div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -54,7 +56,8 @@ const SearchComp = () => {
             </div>
             <div className="flex justify-between">
               {trackResults?.map((track) => (
-                <div
+                <Link
+                  to={`/song/${track.id}`}
                   key={track.id}
                   className="flex flex-1  items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
@@ -66,7 +69,7 @@ const SearchComp = () => {
                     />
                   </div>
                   <div>{track.name.substr(0, 20)}</div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -78,7 +81,8 @@ const SearchComp = () => {
             </div>
             <div className="flex justify-between">
               {albumResults?.map((album) => (
-                <div
+                <Link
+                  to={`/album/${album.id}`}
                   key={album.id}
                   className="flex flex-1  items-center sm:gap-3 gap-2 sm:p-4 p-2 sm:text-lg text-xs text-activeColor transition-all ease-in-out duration-300 hover:bg-[rgba(255,255,255,.3)] rounded-md cursor-pointer"
                 >
@@ -90,7 +94,7 @@ const SearchComp = () => {
                     />
                   </div>
                   <div>{album.name.substr(0, 20)}</div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
